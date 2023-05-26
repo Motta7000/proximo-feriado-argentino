@@ -1,0 +1,143 @@
+[{
+    "mes": "enero",
+    "1": "Año Nuevo",
+    "6": "Día de Reyes",
+    "7": "Día del coleccionista",
+    "10": "Día de los trabajadores del transporte",
+    "21": "Santa Inés",
+    "28": "Santo Tomás de Aquino"
+  }, {
+    "mes": "febrero",
+    "04": "Día del guardavidas",
+    "05": "Día del trabajador deportivo",
+    "06": "Día del guardabosque",
+    "11": "Nuestra Sra. de Lourdes",
+    "14": "Día de San Valentín",
+    "15": "Día del redactor publicitario",
+    "21": "Día internacional de la lengua materna",
+    "22": "Día de la Antártida Argentina",
+    "24": "Día del mecánico automotor"
+  }, {
+    "mes": "marzo",
+    "1": "Día del transporte",
+    "4": "Día del campo (1er sábado)",
+    "6": "Día del escultor en Argentina",
+    "8": "Día Internacional de la Mujer",
+    "12": "Día del escudo nacional argentino",
+    "14": [
+      "Día de las escuelas de fronteras",
+      "Día del trabajador de la alimentación"
+    ],
+    "16": "Día de la seguridad",
+    "17": "Día de San Patricio",
+    "18": [
+      "Día del ruralista en Argentina",
+      "Día del trabajador telefónico"
+    ],
+    "19": [
+      "Día del artesano",
+      "Día del carpintero",
+      "San José"
+    ],
+    "20": "Día de la energía eléctrica",
+    "21": [
+      "Día forestal mundial",
+      "Comienza el Otoño en el Hemisferio Sur",
+      "Día mundial de la poesía",
+      "Día internacional contra la discriminación"
+    ],
+    "22": "Día mundial del agua",
+    "23": [
+      "Día mundial de la rehabilitación",
+      "Día mundial de la meteorología"
+    ],
+    "24": [
+      "Día del diplomático",
+      "Día Nacional de la Memoria",
+      "San Gabriel"
+    ],
+    "25": "Día del niño por nacer",
+    "26": "Día del Mercosur",
+    "27": [
+      "Día del trabajador aeronáutico",
+      "Día mundial del teatro"
+    ],
+    "31": "La hora del planeta"
+  }, {
+    "mes": "abril",
+    "calculated": {
+      "first_sunday": "Día de la Novia (primer domingo de abril)"
+    },
+    "2": [
+      "Día del papelero",
+      "Día internacional del libro infantil"
+    ],
+    "3": "Día del modelo y de la modelo",
+    "7": "Día mundial de la salud",
+    "10": "Día del investigador científico",
+    "12": "Día del decorador",
+    "13": "Día del kinesiólogo",
+    "14": "Día de las Américas",
+    "15": "Día mundial de las artes",
+    "21": "Día del traductor en Argentina",
+    "22": [
+      "Día mundial de la tierra",
+      "Día del trabajador de la construcción"
+    ],
+    "23": [
+      "Día del matrimonio",
+      "Día mundial del idioma español",
+      "Día mundial del libro y del derecho de autor"
+    ],
+    "26": "Día del librero",
+    "27": "Día del agente de viajes",
+    "29": [
+      "Día internacional de la danza",
+      "Día del animal"
+    ]
+  }, {
+    "mes": "mayo",
+    "1": [
+      "Día Internacional del Trabajo",
+      "Día de la Constitución Argentina"
+    ],
+    "3": [
+      "Día mundial de la libertad de prensa",
+      "Santos Felipe y Santiago, apóstoles"
+    ],
+    "6": "Día mundial del filatelista",
+    "7": "Día del taxista",
+    "8": [
+      "Día Internacional de la Cruz Roja",
+      "Día nacional del actor en Argentina"
+    ],
+    "11": [
+      "Día del autor y del compositor",
+      "Día del Himno Nacional Argentino"
+    ],
+    "12": [
+      "Día del fonoaudiólogo",
+      "Día internacional de la enfermera"
+    ],
+    "14": [
+      "Día del dirigente de fútbol",
+      "Día del ahijado",
+      "Día del nieto en Argentina"
+    ],
+    "15": [
+      "Día internacional de la familia",
+      "Día del docente universitario"
+    ],
+    "17": [
+      "Día mundial de las telecomunicaciones",
+      "Día internacional de Internet"
+    ],
+    "18": [
+      "Día internacional de los museos",
+      "Día de la escarapela en Argentina"
+    ],
+    "20": "Día del futbolista",
+    "21": "Día mundial de la diversidad cultural",
+    "25": "Aniversario de la Revolución de 1810",
+    "26": "Día del visitador médico"
+  }]
