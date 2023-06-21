@@ -122,6 +122,8 @@ onMounted(() => {
             }
 
             time.value = `${days} : ${hours} : ${mins} : ${secs}`;
+
+
             console.log(time.value);
         } else {
             clearInterval(intervalId);
@@ -135,17 +137,26 @@ onMounted(() => {
 </script>
 
 <template>
-    <div>
-        {{ time }}
-      
+    <h1 class="display-4 text-white">¿Cuanto falta para el proximo feriado?</h1>
+    <div class="timer">
+        <h1 class="display-4 text-white text-nowrap">
+            {{ time }}
+        </h1>
     </div>
-    <div>
-        {{ queSeCelebra }}
-    </div>
+
+
+    <li v-for="value in queSeCelebra" class=" text-white">
+        {{ value }}
+    </li>
 </template>
 
 <style scoped>
 div {
-   text-align: center;
+    text-align: center;
+}
+
+.timer {
+    border-radius: 15px;
+    border: 1px solid rgb(255, 255, 255);
 }
 </style>

@@ -22,29 +22,48 @@ console.log(isDark)
 
     </button>
     -->
-    <div class="container">
-      <img src="../img/argentina.jpg" alt="Snow" style="width:100vw;">
-      <div class="bottom-left">Bottom Left</div>
-      <div class="top-left">Top Left</div>
-      <div class="top-right">Top Right</div>
-      <div class="bottom-right">Bottom Right</div>
-      <div class="centered">Centered</div>
-    </div>
+
+
     <!-- HERO -->
-    <div class="hero">
-      <div class ="container-hero">
+    <div class="hero vh-100 d-flex align-items-center">
+      <div class="container-hero">
         <div class="row">
-          <div class="col-lg-7">
-            <h1 class="display-4">Build robust</h1>
+          <div class="col-lg-7 mx-auto text-center">
+           
+            <Timer />
           </div>
         </div>
       </div>
     </div>
-    <Timer />
+   
   </main>
 </template>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@700&display=swap');
+
+.hero {
+  background-image: url('../img/argentina.jpg');
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+  z-index: 2;
+  justify-content: center;
+}
+
+.hero::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(34, 100, 136, 0.671);
+  z-index: -1;
+
+}
+
 img {
   max-height: 600px;
 }
