@@ -5,25 +5,20 @@ import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
-  <header >
-    <nav>
-      <RouterLink to="/">Home</RouterLink>
-      <RouterLink to="/about">About</RouterLink>
-    </nav>
+  <header>
+
     <div class="nav-container">
       <nav class="navmain navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Navbar</a>
+        <div class="container">
+          <a class="navbar-brand" href="#">Proximo feriado Argentino</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse justify-content-left" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-              <a class="nav-link" href="#">Features</a>
-              <a class="nav-link" href="#">Pricing</a>
-              <a class="nav-link disabled">Disabled</a>
+              <RouterLink class="nav-link" to="/">Home</RouterLink>
+              <RouterLink class="nav-link" to="/about">About</RouterLink>
             </div>
           </div>
         </div>
@@ -48,5 +43,11 @@ import HelloWorld from './components/HelloWorld.vue'
   --background-color-secondary: #2d2d30;
   --accent-color: #3f3f3f;
   --text-primary-color: #ddd;
+}
+.container{
+  justify-content: space-around;
+}
+.collapse{
+  justify-content: flex-end;
 }
 </style>

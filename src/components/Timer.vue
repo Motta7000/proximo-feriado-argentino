@@ -137,6 +137,15 @@ onMounted(() => {
 <template>
     <div>
         {{ time }}
+      
+    </div>
+    <div>
         {{ queSeCelebra }}
     </div>
 </template>
+
+<style scoped>
+div {
+   text-align: center;
+}
+</style>
