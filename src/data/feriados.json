@@ -1,6 +1,6 @@
 [{
     "mes": "enero",
-    "1": "Año Nuevo",
+    "1": ["Año Nuevo"],
     "6": "Día de Reyes",
     "7": "Día del coleccionista",
     "10": "Día de los trabajadores del transporte",
@@ -180,12 +180,12 @@
       "Día de la Unidad Latinoamericana y Caribeña",
       "Santo Tomás Moro, patrono de los políticos"
     ],
-    "23": "Día de las Naciones Unidas para la administración",
+    "23": ["Día de las Naciones Unidas para la administración"],
     "24": [
       "San Juan Bautista",
       "Día del cantor nacional argentino"
     ],
-    "25": "Día de la gente de mar",
+    "25": ["Día de la gente de mar"],
     "26": "Día mundial contra el uso y el tráfico de drogas",
     "29": "San Pedro y San Pablo, Solemnidad"
   }, {

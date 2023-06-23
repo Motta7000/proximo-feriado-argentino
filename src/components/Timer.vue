@@ -158,5 +158,6 @@ div {
 .timer {
     border-radius: 15px;
     border: 1px solid rgb(255, 255, 255);
+    margin:1rem;
 }
 </style>

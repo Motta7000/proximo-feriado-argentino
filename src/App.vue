@@ -7,7 +7,7 @@ import HelloWorld from './components/HelloWorld.vue'
   <header>
 
     <div class="nav-container">
-      <nav class="navmain navbar navbar-expand-lg bg-body-tertiary">
+      <nav style="justify-content: space-evenly;" class="navmain navbar navbar-expand-lg bg-body-tertiary">
         <div class="container">
           <a class="navbar-brand" href="#">Proximo feriado Argentino</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
@@ -43,10 +43,15 @@ import HelloWorld from './components/HelloWorld.vue'
   --accent-color: #3f3f3f;
   --text-primary-color: #ddd;
 }
-.container{
+
+.container {
   justify-content: space-around;
 }
-.collapse{
+
+.collapse {
   justify-content: flex-end;
 }
-</style>
+
+.navbar-toggler {
+  margin: auto;
+}</style>
