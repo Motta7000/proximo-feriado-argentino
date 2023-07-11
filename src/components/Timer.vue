@@ -11,6 +11,7 @@ onMounted(() => {
 
     console.log(feriados[rightNow.getMonth()])
     var esteMes = feriados[rightNow.getMonth()]
+
     const getProximoFeriado = (start) => {
         var launchDate = null;
 
@@ -29,15 +30,19 @@ onMounted(() => {
                     console.log(launchDate)
                     queSeCelebraAux = esteMes[date]
                     console.log(rightNow)
+                    console.log(queSeCelebraAux)
+
                     return { launchDate, queSeCelebraAux }
                 }
                 //   console.log(mapMonth(esteMes['mes']) + ' VS ' + rightNow.getMonth())
                 if (mapMonth(esteMes['mes']) > rightNow.getMonth()) {
+                    console.log(esteMes['mes'] + ' ' + date + ', ' + rightNow.getFullYear() + ' ' + +' ' + 0 + ":" + 0 + ":" + 0)
                     launchDate = new Date(esteMes['mes'] + ' ' + date + ', ' + rightNow.getFullYear() + ' ' + +' ' + 0 + ":" + 0 + ":" + 0)
 
                     console.log(launchDate)
                     queSeCelebraAux = esteMes[date]
                     console.log(rightNow)
+                    console.log(queSeCelebraAux)
                     return { launchDate, queSeCelebraAux }
                 }
             }
@@ -67,7 +72,7 @@ onMounted(() => {
             case 'julio':
                 return 6;
                 break;
-            case 'agosto':
+            case 'august':
                 return 7;
                 break;
             case 'septiembre':
@@ -139,15 +144,16 @@ onMounted(() => {
 <template>
     <h1 class="display-4 text-white">¿Cuanto falta para el proximo feriado?</h1>
     <div class="timer">
-        <h1 class="display-4 text-white text-nowrap">
+        <h1 class="timer-text display-4 text-white text-nowrap">
             {{ time }}
         </h1>
     </div>
 
-
-    <li v-for="value in queSeCelebra" class=" text-white">
-        {{ value }}
-    </li>
+    <ol>
+        <li v-for="value in queSeCelebra" class=" text-white">
+           <h1> {{ value }}</h1>
+        </li>
+    </ol>
 </template>
 
 <style scoped>
@@ -158,6 +164,18 @@ div {
 .timer {
     border-radius: 15px;
     border: 1px solid rgb(255, 255, 255);
-    margin:1rem;
+    margin: 1rem;
+    box-shadow: 10px 5px 5px rgb(0, 0, 0,0.5);
+}
+.timer-text{
+    margin: 0;
+}
+
+li {
+    list-style-type: none;
+}
+h1 {
+    font-family:Arial, Helvetica, sans-serif;
+    text-shadow: 2px 1px 2px rgb(0, 0, 0,0.8);
 }
 </style>

@@ -25,7 +25,7 @@ console.log(isDark)
 
 
     <!-- HERO -->
-    <div class="hero vh-100 d-flex align-items-center">
+    <div class="hero vh d-flex align-items-center">
       <div class="container-hero">
         <div class="row">
           <div class="col-lg-7 mx-auto text-center">
@@ -42,6 +42,9 @@ console.log(isDark)
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@700&display=swap');
 
+.vh{
+  height: 70vh;
+}
 .hero {
   background-image: url('../img/argentina.jpg');
   background-position: center;
@@ -69,6 +72,9 @@ img {
 }
 
 /* Container holding the image and the text */
+.container-hero{
+  overflow:hidden;
+}
 .container {
   position: relative;
   text-align: center;
