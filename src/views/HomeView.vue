@@ -1,14 +1,84 @@
 <script setup>
 import { useDark, useToggle } from "@vueuse/core"
 import Timer from "../components/timer.vue";
-const isDark = useDark({
-  selector: "body",
-  attribute: "color-scheme",
-  valueDark: "dark",
-  valueLight: "light",
-});
-const toggleDark = useToggle(isDark);
-console.log(isDark)
+import Card from "../components/Card.vue"
+import feriados from "../data/feriados.json"
+
+console.log(feriados)
+
+function daysUntil(date) {
+  var rightNow = new Date();
+  rightNow = new Date((rightNow.getMonth() + 1) + ' ' + rightNow.getDate() + ', ' + rightNow.getFullYear() + ' ' + +' ' + rightNow.getHours() + ":" + rightNow.getMinutes() + ":" + rightNow.getSeconds())
+
+  var esteMes = feriados[rightNow.getMonth()]
+  console.log(esteMes)
+  var count = 0;
+  var r = []
+  while (count < 10) {
+    var i = rightNow.getMonth() + count; // 0 <= i <= 10
+
+    esteMes = feriados[i]
+    console.log(esteMes)
+    for (const date in esteMes) {
+      if (date != 'mes' && date != 'calculated') {
+        console.log(esteMes[date])
+        var launchDate = new Date(esteMes['mes'] + ' ' + date + ', ' + rightNow.getFullYear() + ' ' + +' ' + 0 + ":" + 0 + ":" + 0)
+        console.log(esteMes['mes'] + ' ' + date + ', ' + rightNow.getFullYear() + ' ' + +' ' + 0 + ":" + 0 + ":" + 0)
+        console.log(launchDate)
+        var DifferenceInDays = Math.floor((launchDate.getTime() - rightNow.getTime()) / (1000 * 3600 * 24))
+        if (DifferenceInDays > 0)
+          r.push({ 'Days': DifferenceInDays, 'queSeCelebra': esteMes[date][0] })
+        console.log(r)
+      }
+
+    }
+    count++;
+  }
+  if (i > 10) {
+    
+  }
+  function mapMonth(mes) {
+    switch (mes) {
+      case 'enero':
+        return 0;
+        break;
+      case 'febrero':
+        return 1;
+        break;
+      case 'marzo':
+        return 2;
+        break;
+      case 'abril':
+        return 3;
+        break;
+      case 'mayo':
+        return 4;
+        break;
+      case 'junio':
+        return 5;
+        break;
+      case 'julio':
+        return 6;
+        break;
+      case 'august':
+        return 7;
+        break;
+      case 'septiembre':
+        return 8;
+        break;
+      case 'octubre':
+        return 9;
+        break;
+      case 'noviembre':
+        return 10;
+        break;
+      case 'december':
+        return 11;
+        break;
+    }
+  }
+}
+daysUntil("a");
 </script>
 
 <template>
@@ -29,22 +99,46 @@ console.log(isDark)
       <div class="container-hero">
         <div class="row">
           <div class="col-lg-7 mx-auto text-center">
-           
+
             <Timer />
           </div>
         </div>
       </div>
     </div>
-   
+    <div class="body d-flex align-items-center">
+      <div class="container-body">
+        <h1>Proximos feriados</h1>
+        <div class="grid-container">
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+        </div>
+
+      </div>
+    </div>
+
+
   </main>
 </template>
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@700&display=swap');
 
-.vh{
-  height: 70vh;
+.grid-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
 }
+
+.vh {
+  height: 80vh;
+}
+
 .hero {
   background-image: url('../img/argentina.jpg');
   background-position: center;
@@ -53,6 +147,11 @@ console.log(isDark)
   position: relative;
   z-index: 2;
   justify-content: center;
+}
+
+.body {
+  justify-content: center;
+
 }
 
 .hero::after {
@@ -72,9 +171,10 @@ img {
 }
 
 /* Container holding the image and the text */
-.container-hero{
-  overflow:hidden;
+.container-hero {
+  overflow: hidden;
 }
+
 .container {
   position: relative;
   text-align: center;

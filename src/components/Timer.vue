@@ -5,11 +5,11 @@ let time = ref('');
 var queSeCelebra = ref('')
 onMounted(() => {
     var rightNow = new Date()
-    console.log(rightNow)
+    //console.log(rightNow)
     rightNow = new Date((rightNow.getMonth() + 1) + ' ' + rightNow.getDate() + ', ' + rightNow.getFullYear() + ' ' + +' ' + rightNow.getHours() + ":" + rightNow.getMinutes() + ":" + rightNow.getSeconds())
-    console.log(rightNow.getMonth())
+    // console.log(rightNow.getMonth())
 
-    console.log(feriados[rightNow.getMonth()])
+    // console.log(feriados[rightNow.getMonth()])
     var esteMes = feriados[rightNow.getMonth()]
 
     const getProximoFeriado = (start) => {
@@ -20,36 +20,37 @@ onMounted(() => {
             console.log(esteMes)
             var queSeCelebraAux;
             for (const date in esteMes) {
-                console.log(date)
+                //    console.log(date)
                 /*    console.log(date)
                     console.log(esteMes['mes'])
                     console.log(mapMonth(esteMes['mes']) + ' VS ' +rightNow.getMonth())
                     */
                 if (mapMonth(esteMes['mes']) == rightNow.getMonth() && date > rightNow.getDate()) {
                     launchDate = new Date(esteMes['mes'] + ' ' + date + ', ' + rightNow.getFullYear() + ' ' + +' ' + 0 + ":" + 0 + ":" + 0)
-                    console.log(launchDate)
+                    //      console.log(launchDate)
+                
                     queSeCelebraAux = esteMes[date]
-                    console.log(rightNow)
-                    console.log(queSeCelebraAux)
+                    //        console.log(rightNow)
+                    //         console.log(queSeCelebraAux)
 
                     return { launchDate, queSeCelebraAux }
                 }
                 //   console.log(mapMonth(esteMes['mes']) + ' VS ' + rightNow.getMonth())
                 if (mapMonth(esteMes['mes']) > rightNow.getMonth()) {
-                    console.log(esteMes['mes'] + ' ' + date + ', ' + rightNow.getFullYear() + ' ' + +' ' + 0 + ":" + 0 + ":" + 0)
+                    //       console.log(esteMes['mes'] + ' ' + date + ', ' + rightNow.getFullYear() + ' ' + +' ' + 0 + ":" + 0 + ":" + 0)
                     launchDate = new Date(esteMes['mes'] + ' ' + date + ', ' + rightNow.getFullYear() + ' ' + +' ' + 0 + ":" + 0 + ":" + 0)
-
-                    console.log(launchDate)
+                    console.log(date)
+                    //       console.log(launchDate)
                     queSeCelebraAux = esteMes[date]
-                    console.log(rightNow)
-                    console.log(queSeCelebraAux)
+                    //        console.log(rightNow)
+                    //         console.log(queSeCelebraAux)
                     return { launchDate, queSeCelebraAux }
                 }
             }
         }
     }
 
-    function mapMonth(mes) {
+     function mapMonth(mes) {
         switch (mes) {
             case 'enero':
                 return 0;
@@ -84,12 +85,12 @@ onMounted(() => {
             case 'noviembre':
                 return 10;
                 break;
-            case 'diciembre':
+            case 'december':
                 return 11;
                 break;
         }
     }
-    console.log(getProximoFeriado(rightNow.getMonth()))
+    //console.log(getProximoFeriado(rightNow.getMonth()))
 
     // const launchDateTime = launchDate.getTime()
     var proxFeriado = getProximoFeriado(rightNow.getMonth())
@@ -97,10 +98,10 @@ onMounted(() => {
     if (proxFeriado == null) {
         proxFeriado = { launchDate: new Date(1 + ' ' + 1 + ', ' + (rightNow.getFullYear() + 1) + ' ' + +' ' + 0 + ":" + 0 + ":" + 0), queSeCelebraAux: "Año nuevo" }
     }
-    console.log(proxFeriado)
+   // console.log(proxFeriado)
     const launchDateTime = proxFeriado.launchDate
     queSeCelebra = proxFeriado.queSeCelebraAux
-    console.log(launchDateTime)
+  //  console.log(launchDateTime)
     const updateTimer = () => {
         const now = new Date().getTime();
         const t = launchDateTime - now;
@@ -129,7 +130,7 @@ onMounted(() => {
             time.value = `${days} : ${hours} : ${mins} : ${secs}`;
 
 
-            console.log(time.value);
+        //    console.log(time.value);
         } else {
             clearInterval(intervalId);
         }
@@ -151,7 +152,7 @@ onMounted(() => {
 
     <ol>
         <li v-for="value in queSeCelebra" class=" text-white">
-           <h1> {{ value }}</h1>
+            <h1> {{ value }}</h1>
         </li>
     </ol>
 </template>
@@ -165,17 +166,19 @@ div {
     border-radius: 15px;
     border: 1px solid rgb(255, 255, 255);
     margin: 1rem;
-    box-shadow: 10px 5px 5px rgb(0, 0, 0,0.5);
+    box-shadow: 10px 5px 5px rgb(0, 0, 0, 0.5);
 }
-.timer-text{
+
+.timer-text {
     margin: 0;
 }
 
 li {
     list-style-type: none;
 }
+
 h1 {
-    font-family:Arial, Helvetica, sans-serif;
-    text-shadow: 2px 1px 2px rgb(0, 0, 0,0.8);
+    font-family: Arial, Helvetica, sans-serif;
+    text-shadow: 2px 1px 2px rgb(0, 0, 0, 0.8);
 }
 </style>
