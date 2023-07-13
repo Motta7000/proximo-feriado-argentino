@@ -28,7 +28,7 @@ onMounted(() => {
                 if (mapMonth(esteMes['mes']) == rightNow.getMonth() && date > rightNow.getDate()) {
                     launchDate = new Date(esteMes['mes'] + ' ' + date + ', ' + rightNow.getFullYear() + ' ' + +' ' + 0 + ":" + 0 + ":" + 0)
                     //      console.log(launchDate)
-                
+
                     queSeCelebraAux = esteMes[date]
                     //        console.log(rightNow)
                     //         console.log(queSeCelebraAux)
@@ -50,7 +50,7 @@ onMounted(() => {
         }
     }
 
-     function mapMonth(mes) {
+    function mapMonth(mes) {
         switch (mes) {
             case 'enero':
                 return 0;
@@ -98,10 +98,10 @@ onMounted(() => {
     if (proxFeriado == null) {
         proxFeriado = { launchDate: new Date(1 + ' ' + 1 + ', ' + (rightNow.getFullYear() + 1) + ' ' + +' ' + 0 + ":" + 0 + ":" + 0), queSeCelebraAux: "Año nuevo" }
     }
-   // console.log(proxFeriado)
+    // console.log(proxFeriado)
     const launchDateTime = proxFeriado.launchDate
     queSeCelebra = proxFeriado.queSeCelebraAux
-  //  console.log(launchDateTime)
+    //  console.log(launchDateTime)
     const updateTimer = () => {
         const now = new Date().getTime();
         const t = launchDateTime - now;
@@ -130,7 +130,7 @@ onMounted(() => {
             time.value = `${days} : ${hours} : ${mins} : ${secs}`;
 
 
-        //    console.log(time.value);
+            //    console.log(time.value);
         } else {
             clearInterval(intervalId);
         }
@@ -147,7 +147,9 @@ onMounted(() => {
     <div class="timer">
         <h1 class="timer-text display-4 text-white text-nowrap">
             {{ time }}
+         
         </h1>
+       <!-- <h1 class="timer-text timer-explained text-white text-nowrap">Días</h1>-->
     </div>
 
     <ol>
@@ -167,6 +169,14 @@ div {
     border: 1px solid rgb(255, 255, 255);
     margin: 1rem;
     box-shadow: 10px 5px 5px rgb(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.timer-explained {
+    font-size: 15px;
+    position: absolute;
+    left: 27%;
+    bottom: -5px;
 }
 
 .timer-text {

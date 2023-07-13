@@ -1,70 +1,70 @@
 [
   {
     "mes": "enero",
-    "1": ["Año Nuevo"]
+    "1": ["Año Nuevo","(1 de Enero)"]
   },
   {
     "mes": "febrero",
-    "20": ["Carnaval"],
-    "21": ["Carnaval"]
+    "20": ["Carnaval","(20 de Febrero)"],
+    "21": ["Carnaval","(21 de Febrero)"]
   },
   {
     "mes": "marzo",
-    "24": ["Día Nacional de la Memoria por la Verdad y la Justicia"]
+    "24": ["Día Nacional de la Memoria por la Verdad y la Justicia","(24 de Marzo)"]
   },
   {
     "mes": "abril",
     "calculated": {
       "first_sunday": "Día de la Novia (primer domingo de abril)"
     },
-    "2": ["Día del Veterano y de los Caídos en la Guerra de Malvinas"],
-    "7": "Viernes Santo Festividad Cristiana"
+    "2": ["Día del Veterano y de los Caídos en la Guerra de Malvinas","(2 de Abril)"],
+    "7": ["Viernes Santo Festividad Cristiana","(7 de Abril)"]
   },
   {
     "mes": "mayo",
-    "1": ["Día Internacional del Trabajo"],
-    "25": ["Aniversario de la Revolución de 1810"],
-    "26": ["Feriado con fines turísticos"]
+    "1": ["Día Internacional del Trabajo","(1 de Mayo)"],
+    "25": ["Aniversario de la Revolución de 1810","(25 de Mayo)"],
+    "26": ["Feriado con fines turísticos","(26 de Mayo)"]
   },
   {
     "mes": "junio",
     "calculated": {
       "third_sunday": "Día del Padre (tercer domingo de junio)"
     },
-    "17": ["Paso a la Inmortalidad del Gral. Don Martín Miguel de Güemes"],
-    "19": ["Feriado con fines turísticos"],
-    "20": ["Paso a la Inmortalidad del Gral. Manuel Belgrano"]
+    "17": ["Paso a la Inmortalidad del Gral. Don Martín Miguel de Güemes","(17 de Junio)"],
+    "19": ["Feriado con fines turísticos","(19 de Junio)"],
+    "20": ["Paso a la Inmortalidad del Gral. Manuel Belgrano","(20 de Junio)"]
   },
   {
     "mes": "julio",
-    "9": ["Día de la independencia Argentina"]
+    "9": ["Día de la independencia Argentina","(9 de Julio)"]
   },
   {
     "mes": "august",
     "calculated": {
       "third_sunday": ["Día del Niño (tercer domingo de agosto)","Día del Abuelo (tercer domingo de agosto)"]
     },
-    "17": ["Aniversario de José de San Martín"]
+    "17": ["Aniversario de José de San Martín","(17 de Agosto)"]
   },
   {
     "mes": "octubre",
     "calculated": {
       "third_sunday": "Día de la Madre (tercer domingo de octubre)"
     },
-    "12": ["Día de la diversidad cultural"],
-    "13": ["Feriado con fines turísticos"],
-    "16": ["Día mundial de la alimentación"]
+    "12": ["Día de la diversidad cultural","(12 de Octubre)"],
+    "13": ["Feriado con fines turísticos","(13 de Octubre)"],
+    "16": ["Día mundial de la alimentación","(16 de Octubre)"]
   },
   {
     "mes": "noviembre",
     "calculated": {
       "second_sunday": "Día del Abuela (segundo domingo de noviembre)"
     },
-    "20": ["Día de la Soberanía Nacional"]
+    "20": ["Día de la Soberanía Nacional","(20 de Noviembre)"]
   },
   {
     "mes": "december",
-    "8": ["Inmaculada Concepción de María"],
-    "25": ["Navidad"]
+    "8": ["Inmaculada Concepción de María","(8 de Diciembre)"],
+    "25": ["Navidad","(25 de Diciembre)"]
   }
 ]

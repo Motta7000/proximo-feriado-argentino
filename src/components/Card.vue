@@ -1,20 +1,47 @@
 <script setup>
-
+import { defineProps } from "vue"
+const { feriado } = defineProps(['feriado'])
+console.log(feriado)
 </script>
 
 <template>
     <div class="card">
         <img src="../img/icono-c.jpg" />
         <div class="card-text">
-            <h2>Feriado</h2>
-            <p>Texto explicativo</p>
+            <p>{{ feriado.queSeCelebra }}</p>
+            <div class="days-left">
+                <p>{{ feriado.date }}</p>
+                <p>Faltan <b>{{ feriado.days }} </b> días</p>
+            </div>
+
         </div>
     </div>
 </template>
 
 <style scoped>
+.days-left {
+    float: left;
+    margin-top: auto;
+}
+
 img {
-    width: 230px;
+    width: 100%;
     height: 130px;
+}
+
+.card-text {
+    padding: 10px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.card {
+    min-width: 160px;
+    max-width: 220px;
+}
+
+p {
+    margin: 0;
 }
 </style>

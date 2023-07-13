@@ -2,7 +2,9 @@
 import { useDark, useToggle } from "@vueuse/core"
 import Timer from "../components/timer.vue";
 import Card from "../components/Card.vue"
+import { ref } from 'vue';
 import feriados from "../data/feriados.json"
+let r = ref([]);
 
 console.log(feriados)
 
@@ -13,9 +15,9 @@ function daysUntil(date) {
   var esteMes = feriados[rightNow.getMonth()]
   console.log(esteMes)
   var count = 0;
-  var r = []
-  while (count < 10) {
-    var i = rightNow.getMonth() + count; // 0 <= i <= 10
+  var i = 0;
+  while (count < 10 && i <= 10) {
+    i = rightNow.getMonth() + count; // 0 <= i <= 10
 
     esteMes = feriados[i]
     console.log(esteMes)
@@ -27,16 +29,28 @@ function daysUntil(date) {
         console.log(launchDate)
         var DifferenceInDays = Math.floor((launchDate.getTime() - rightNow.getTime()) / (1000 * 3600 * 24))
         if (DifferenceInDays > 0)
-          r.push({ 'Days': DifferenceInDays, 'queSeCelebra': esteMes[date][0] })
-        console.log(r)
+          r.value.push({ 'days': DifferenceInDays, 'queSeCelebra': esteMes[date][0], 'date': esteMes[date][1] })
+        console.log(r.value)
       }
 
     }
     count++;
   }
-  if (i > 10) {
-    
+  /*
+  if (i > 10 && count < 10) {
+    while(i < feriados.length)
+    {
+      while(j < feriados[i])
+      {
+        if (date !=)
+        j++
+      }
+      i++
+    }
+
+    count++;
   }
+  */
   function mapMonth(mes) {
     switch (mes) {
       case 'enero':
@@ -92,48 +106,55 @@ daysUntil("a");
 
     </button>
     -->
-
-
     <!-- HERO -->
     <div class="hero vh d-flex align-items-center">
       <div class="container-hero">
         <div class="row">
           <div class="col-lg-7 mx-auto text-center">
-
             <Timer />
           </div>
         </div>
       </div>
     </div>
-    <div class="body d-flex align-items-center">
+    <div class=" body d-flex align-items-center">
       <div class="container-body">
-        <h1>Proximos feriados</h1>
-        <div class="grid-container">
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+        <h1 class="py-2">Proximos feriados</h1>
+        <div class="grid-container px-2">
+          <Card v-for="feriado in r" :feriado="feriado" />
         </div>
-
       </div>
     </div>
-
-
   </main>
 </template>
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@700&display=swap');
 
+h1 {
+  text-align: center;
+}
+
 .grid-container {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  /* grid-template-columns: repeat(auto-fill, minmax(15rem,1fr));*/
   grid-gap: 10px;
   grid-auto-rows: minmax(100px, auto);
 }
+
+@media screen and (max-width: 600px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .grid-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
 
 .vh {
   height: 80vh;
