@@ -24,10 +24,43 @@ import HelloWorld from './components/HelloWorld.vue'
       </nav>
     </div>
   </header>
+
   <RouterView />
+  <footer>
+    <div class="footer-container">
+
+    </div>
+    <div class="copyright">
+      <div class="copyright-container">
+        <p class="copyright-text m-0">Copyright 2023</p>
+      </div>
+    </div>
+  </footer>
 </template>
 
 <style scoped>
+.copyright-text{
+  color: #ddd;
+}
+.footer-container {
+  background-color: #131110;
+  width: 100%;
+  min-height: 200px;
+}
+
+.copyright {
+  display:flex;
+  background-color: #252222;
+  width: 100%;
+  min-height: 30px;
+  align-items: center;
+  justify-content: center;
+}
+
+.copyright-container {
+  height: 100%;
+}
+
 :root {
   --background-color-primary: #ebebeb;
   --background-color-secondary: #fafafa;
@@ -54,4 +87,5 @@ import HelloWorld from './components/HelloWorld.vue'
 
 .navbar-toggler {
   margin: auto;
-}</style>
+}
+</style>

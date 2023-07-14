@@ -153,8 +153,9 @@ onMounted(() => {
     </div>
 
     <ol>
-        <li v-for="value in queSeCelebra" class=" text-white">
-            <h1> {{ value }}</h1>
+        <li class=" text-white">
+            <h1>{{queSeCelebra[0]}}</h1>
+            <h1>{{queSeCelebra[1]}}</h1>
         </li>
     </ol>
 </template>

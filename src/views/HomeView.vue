@@ -29,7 +29,7 @@ function daysUntil(date) {
         console.log(launchDate)
         var DifferenceInDays = Math.floor((launchDate.getTime() - rightNow.getTime()) / (1000 * 3600 * 24))
         if (DifferenceInDays > 0)
-          r.value.push({ 'days': DifferenceInDays, 'queSeCelebra': esteMes[date][0], 'date': esteMes[date][1] })
+          r.value.push({ 'days': DifferenceInDays, 'queSeCelebra': esteMes[date][0], 'date': esteMes[date][1],'img':esteMes[date][2] })
         console.log(r.value)
       }
 
@@ -141,6 +141,7 @@ h1 {
   /* grid-template-columns: repeat(auto-fill, minmax(15rem,1fr));*/
   grid-gap: 10px;
   grid-auto-rows: minmax(100px, auto);
+  margin-bottom: 2rem;
 }
 
 @media screen and (max-width: 600px) {

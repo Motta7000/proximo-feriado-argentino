@@ -1,12 +1,15 @@
 <script setup>
 import { defineProps } from "vue"
+
 const { feriado } = defineProps(['feriado'])
 console.log(feriado)
+
+
 </script>
 
 <template>
     <div class="card">
-        <img src="../img/icono-c.jpg" />
+        <img :src="feriado.img" alt="img" />
         <div class="card-text">
             <p>{{ feriado.queSeCelebra }}</p>
             <div class="days-left">
@@ -27,6 +30,7 @@ console.log(feriado)
 img {
     width: 100%;
     height: 130px;
+    border-bottom:#d2d2d2 solid 1px;
 }
 
 .card-text {
