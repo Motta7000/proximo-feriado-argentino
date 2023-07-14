@@ -21,7 +21,7 @@
 }
 
 .hero {
-  background-image: url('../img/arg.jpg');
+
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
@@ -37,7 +37,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  background-color: rgb(7, 7, 7);
+  background-color: rgba(34, 100, 136, 0.671);
   z-index: -1;
 
 }

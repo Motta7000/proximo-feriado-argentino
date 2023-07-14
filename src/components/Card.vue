@@ -9,7 +9,7 @@ console.log(feriado)
 
 <template>
     <div class="card">
-        <img :src="feriado.img" alt="img" />
+        <img :src="feriado.img" @error="$event.target.src='https://i.ibb.co/HTx2DB8/icono-c.jpg'" alt="img" />
         <div class="card-text">
             <p>{{ feriado.queSeCelebra }}</p>
             <div class="days-left">

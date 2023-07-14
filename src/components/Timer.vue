@@ -51,45 +51,45 @@ onMounted(() => {
     }
 
     function mapMonth(mes) {
-        switch (mes) {
-            case 'enero':
-                return 0;
-                break;
-            case 'febrero':
-                return 1;
-                break;
-            case 'marzo':
-                return 2;
-                break;
-            case 'abril':
-                return 3;
-                break;
-            case 'mayo':
-                return 4;
-                break;
-            case 'junio':
-                return 5;
-                break;
-            case 'julio':
-                return 6;
-                break;
-            case 'august':
-                return 7;
-                break;
-            case 'septiembre':
-                return 8;
-                break;
-            case 'octubre':
-                return 9;
-                break;
-            case 'noviembre':
-                return 10;
-                break;
-            case 'december':
-                return 11;
-                break;
-        }
+    switch (mes) {
+      case 'january':
+        return 0;
+        break;
+      case 'february':
+        return 1;
+        break;
+      case 'march':
+        return 2;
+        break;
+      case 'april':
+        return 3;
+        break;
+      case 'may':
+        return 4;
+        break;
+      case 'june':
+        return 5;
+        break;
+      case 'july':
+        return 6;
+        break;
+      case 'august':
+        return 7;
+        break;
+      case 'september':
+        return 8;
+        break;
+      case 'october':
+        return 9;
+        break;
+      case 'november':
+        return 10;
+        break;
+      case 'december':
+        return 11;
+        break;
     }
+  }
     //console.log(getProximoFeriado(rightNow.getMonth()))
 
     // const launchDateTime = launchDate.getTime()

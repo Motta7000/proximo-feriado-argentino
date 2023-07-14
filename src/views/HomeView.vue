@@ -15,75 +15,102 @@ function daysUntil(date) {
   var esteMes = feriados[rightNow.getMonth()]
   console.log(esteMes)
   var count = 0;
-  var i = 0;
-  while (count < 10 && i <= 10) {
-    i = rightNow.getMonth() + count; // 0 <= i <= 10
+  var i = rightNow.getMonth();
+  const cantFeriados = 50
+  r.value.splice(0, r.value.length)
+
+  while (count < cantFeriados && i <= 10) {
 
     esteMes = feriados[i]
     console.log(esteMes)
     for (const date in esteMes) {
-      if (date != 'mes' && date != 'calculated') {
-        console.log(esteMes[date])
+      if (date != 'mes' && count < cantFeriados) {
         var launchDate = new Date(esteMes['mes'] + ' ' + date + ', ' + rightNow.getFullYear() + ' ' + +' ' + 0 + ":" + 0 + ":" + 0)
+        console.log("Launch" + launchDate.getTime())
         console.log(esteMes['mes'] + ' ' + date + ', ' + rightNow.getFullYear() + ' ' + +' ' + 0 + ":" + 0 + ":" + 0)
-        console.log(launchDate)
         var DifferenceInDays = Math.floor((launchDate.getTime() - rightNow.getTime()) / (1000 * 3600 * 24))
-        if (DifferenceInDays > 0)
-          r.value.push({ 'days': DifferenceInDays, 'queSeCelebra': esteMes[date][0], 'date': esteMes[date][1],'img':esteMes[date][2] })
-        console.log(r.value)
-      }
+        console.log("Difference: " + DifferenceInDays)
+        if (DifferenceInDays > 0) {
+          r.value.push({ 'days': DifferenceInDays, 'queSeCelebra': esteMes[date][0], 'date': esteMes[date][1], 'img': esteMes[date][2] })
+          count++;
+        }
 
-    }
-    count++;
-  }
-  /*
-  if (i > 10 && count < 10) {
-    while(i < feriados.length)
-    {
-      while(j < feriados[i])
-      {
-        if (date !=)
-        j++
-      }
-      i++
-    }
+        console.log("i: " + i)
+        console.log("count: " + count)
 
-    count++;
+      }
+    }
+    i++; // 0 <= i <= 10
+    console.log("i: " + i)
+
   }
-  */
+  let j;
+  console.log("count: " + count)
+  if (i > 10) {
+    i = 0;
+    while (i <= 10 && count < cantFeriados) {
+      esteMes = feriados[i]
+      console.log(esteMes)
+      for (const date in esteMes) {
+        if (date != 'mes' && count < cantFeriados) {
+        
+          var launchDate = new Date(esteMes['mes'] + ' ' + date + ', ' + rightNow.getFullYear() + ' ' + +' ' + 0 + ":" + 0 + ":" + 0)
+          console.log(esteMes['mes'] + ' ' + date + ', ' + rightNow.getFullYear() + ' ' + +' ' + 0 + ":" + 0 + ":" + 0)
+          launchDate.setFullYear(launchDate.getFullYear() + 1);
+          console.log("Launch" + launchDate.getTime())
+          console.log(esteMes['mes'] + ' ' + date + ', ' + (rightNow.getFullYear()) + ' ' + +' ' + 0 + ":" + 0 + ":" + 0)
+
+          console.log("now: " + rightNow.getTime())
+          var DifferenceInDays = Math.floor((launchDate.getTime() - rightNow.getTime()) / (1000 * 3600 * 24))
+          console.log("Difference: " + DifferenceInDays)
+          if (DifferenceInDays > 0) {
+            r.value.push({ 'days': DifferenceInDays, 'queSeCelebra': esteMes[date][0], 'date': esteMes[date][1], 'img': esteMes[date][2] })
+            count++;
+          }
+
+          console.log("i: " + i)
+          console.log("count: " + count)
+
+        }
+      }
+      i++; // 0 <= i <= 10
+    }
+  }
+
+
   function mapMonth(mes) {
     switch (mes) {
-      case 'enero':
+      case 'january':
         return 0;
         break;
-      case 'febrero':
+      case 'february':
         return 1;
         break;
-      case 'marzo':
+      case 'march':
         return 2;
         break;
-      case 'abril':
+      case 'april':
         return 3;
         break;
-      case 'mayo':
+      case 'may':
         return 4;
         break;
-      case 'junio':
+      case 'june':
         return 5;
         break;
-      case 'julio':
+      case 'july':
         return 6;
         break;
       case 'august':
         return 7;
         break;
-      case 'septiembre':
+      case 'september':
         return 8;
         break;
-      case 'octubre':
+      case 'october':
         return 9;
         break;
-      case 'noviembre':
+      case 'november':
         return 10;
         break;
       case 'december':
