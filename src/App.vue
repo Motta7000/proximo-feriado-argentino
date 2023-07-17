@@ -1,6 +1,7 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+
 </script>
 
 <template>
@@ -28,7 +29,21 @@ import HelloWorld from './components/HelloWorld.vue'
   <RouterView />
   <footer>
     <div class="footer-container">
-
+      <div class="flex-item">
+        <h3>Mas acerca de mi</h3>
+        <p>Soy estudiante de ingeniería en informática el cual esta aprendiendo diversas tecnologias en este caso VueJs</p>
+      </div>
+      <div class="flex-item">
+        <h3 class="">Informacion de contacto</h3>
+        <ul>
+          <li>
+            <p>Agustín Motta</p>
+          </li>
+          <li>
+            <p>motta.agustin6@gmail.com</p>
+          </li>
+        </ul>
+      </div>
     </div>
     <div class="copyright">
       <div class="copyright-container">
@@ -39,17 +54,37 @@ import HelloWorld from './components/HelloWorld.vue'
 </template>
 
 <style scoped>
-.copyright-text{
+h3 {
+  font-weight: 300;
+}
+p{
+  margin:0;
+}
+ul{
+  list-style: none;
+}
+
+.copyright-text {
   color: #ddd;
 }
+
 .footer-container {
   background-color: #131110;
+  color: #fff;
   width: 100%;
   min-height: 200px;
+  display: flex;
+  justify-content: center;
+  padding:10px 50px 10px 50px;
+}
+
+.flex-item {
+  padding: 10px;
+  flex:1;
 }
 
 .copyright {
-  display:flex;
+  display: flex;
   background-color: #252222;
   width: 100%;
   min-height: 30px;
@@ -87,5 +122,4 @@ import HelloWorld from './components/HelloWorld.vue'
 
 .navbar-toggler {
   margin: auto;
-}
-</style>
+}</style>
