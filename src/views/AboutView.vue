@@ -3,7 +3,7 @@
     <div class="container-hero">
       <div class="row">
         <div class="col-lg-7 mx-auto text-center">
-          <h1 >Sitio Web creado por Agustín Motta PRUEBA development</h1>
+          <h1 >Sitio Web creado por Agustín Motta </h1>
           <Timer />
         </div>
       </div>
