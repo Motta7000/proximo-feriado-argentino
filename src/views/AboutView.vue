@@ -3,7 +3,7 @@
     <div class="container-hero">
       <div class="row">
         <div class="col-lg-7 mx-auto text-center">
-          <h1 class="text-white">Sitio Web creado por Agustín Motta</h1>
+          <h1 >Sitio Web creado por Agustín Motta</h1>
           <Timer />
         </div>
       </div>
@@ -37,7 +37,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  background-color: rgba(34, 100, 136, 0.671);
+  background-color: rgb(255, 255, 255);
   z-index: -1;
 
 }

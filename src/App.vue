@@ -8,7 +8,7 @@ import { Icon } from '@iconify/vue';
 <template>
   <header>
 
-    <div class="nav-container">
+    <div class="nav-container navbarnew">
       <nav style="justify-content: space-evenly;" class="navmain navbar navbar-expand-lg bg-body-tertiary">
         <div class="container">
           <a class="navbar-brand" href="#">Próximo Feriado Argentino</a>
@@ -76,6 +76,9 @@ import { Icon } from '@iconify/vue';
 </template>
 
 <style scoped>
+.navbarnew{
+  border-bottom: #645955 solid 1px;
+}
 .anchor{
   text-decoration: none;
   color:#fff
