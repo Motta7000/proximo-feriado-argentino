@@ -1,6 +1,6 @@
 <script setup>
 import { useDark, useToggle } from "@vueuse/core"
-import Timer from "../components/timer.vue";
+import Timer from "../components/Timer.vue";
 import Card from "../components/Card.vue"
 import { ref } from 'vue';
 import feriados from "../data/feriados.json"
@@ -53,7 +53,7 @@ function daysUntil(date) {
       console.log(esteMes)
       for (const date in esteMes) {
         if (date != 'mes' && count < cantFeriados) {
-        
+
           var launchDate = new Date(esteMes['mes'] + ' ' + date + ', ' + rightNow.getFullYear() + ' ' + +' ' + 0 + ":" + 0 + ":" + 0)
           console.log(esteMes['mes'] + ' ' + date + ', ' + rightNow.getFullYear() + ' ' + +' ' + 0 + ":" + 0 + ":" + 0)
           launchDate.setFullYear(launchDate.getFullYear() + 1);
