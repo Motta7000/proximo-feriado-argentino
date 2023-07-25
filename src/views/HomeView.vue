@@ -144,8 +144,8 @@ daysUntil("a");
       </div>
     </div>
     <div class=" body d-flex align-items-center">
-      <div class="container-body">
-        <h1 class="py-2">Proximos feriados</h1>
+      <div class="py-2 container-body">
+        <h1 class="pb-2">Próximos feriados</h1>
         <div class="grid-container px-2">
           <Card v-for="feriado in r" :feriado="feriado" />
         </div>
@@ -189,7 +189,7 @@ h1 {
 }
 
 .hero {
-  background-image: url('../img/argentina.jpg');
+  background-image: url('../assets/img/argentina.jpg');
   background-position: center;
   background-size: cover;
   background-attachment: fixed;

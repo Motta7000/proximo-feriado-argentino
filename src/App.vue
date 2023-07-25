@@ -1,6 +1,7 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+import { Icon } from '@iconify/vue';
 
 </script>
 
@@ -10,15 +11,15 @@ import HelloWorld from './components/HelloWorld.vue'
     <div class="nav-container">
       <nav style="justify-content: space-evenly;" class="navmain navbar navbar-expand-lg bg-body-tertiary">
         <div class="container">
-          <a class="navbar-brand" href="#">Proximo Feriado Argentino</a>
+          <a class="navbar-brand" href="#">Próximo Feriado Argentino</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse justify-content-left" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <RouterLink class="nav-link" to="/">Home</RouterLink>
-              <RouterLink class="nav-link" to="/about">About</RouterLink>
+              <RouterLink class="nav-link" to="/">Inicio</RouterLink>
+              <RouterLink class="nav-link" to="/about">Acerca de</RouterLink>
             </div>
           </div>
         </div>
@@ -30,17 +31,38 @@ import HelloWorld from './components/HelloWorld.vue'
   <footer>
     <div class="footer-container">
       <div class="flex-item">
-        <h3>Mas acerca de mi</h3>
-        <p>Soy estudiante de ingeniería en informática el cual esta aprendiendo diversas tecnologias en este caso VueJs</p>
+        <h3>Más acerca de mi</h3>
+        <p>Soy estudiante de ingeniería en informática y estoy aprendiendo diversas tecnologías en este caso VueJs
+        </p>
       </div>
       <div class="flex-item">
-        <h3 class="">Informacion de contacto</h3>
+        <h3 class="">Información de contacto</h3>
         <ul>
           <li>
-            <p>Agustín Motta</p>
+            <div class="li-container">
+              <div class="icon-container">
+                <Icon icon="iconamoon:profile" />
+              </div>
+              <p>Agustín Motta</p>
+            </div>
           </li>
           <li>
-            <p>motta.agustin6@gmail.com</p>
+            <div class="li-container">
+              <div class="icon-container">
+                <Icon icon="ic:outline-email" />
+              </div>
+              <p>motta.agustin6@gmail.com</p>
+            </div>
+          </li>
+          <li>
+            <a class="anchor" href="https://www.linkedin.com/in/agustin-motta/">
+              <div class="li-container">
+                <div class="icon-container">
+                  <Icon icon="uil:linkedin" />
+                </div>
+                <p>in/agustin-motta</p>
+              </div>
+            </a>
           </li>
         </ul>
       </div>
@@ -54,13 +76,33 @@ import HelloWorld from './components/HelloWorld.vue'
 </template>
 
 <style scoped>
+.anchor{
+  text-decoration: none;
+  color:#fff
+}
+
+.icon-container {
+  padding-right: 0.5rem;
+}
+
+ul {
+  padding-left: 0;
+}
+
+.li-container {
+  display: flex;
+  align-content: center;
+}
+
 h3 {
   font-weight: 300;
 }
-p{
-  margin:0;
+
+p {
+  margin: 0;
 }
-ul{
+
+ul {
   list-style: none;
 }
 
@@ -75,13 +117,22 @@ ul{
   min-height: 200px;
   display: flex;
   justify-content: center;
-  padding:10px 50px 10px 50px;
+  padding: 10px 50px 10px 50px;
+}
+
+@media screen and (max-width:500px) {
+  .footer-container {
+    display: block;
+    padding: 0;
+  }
 }
 
 .flex-item {
   padding: 10px;
-  flex:1;
+  max-width: 500px;
 }
+
+
 
 .copyright {
   display: flex;
@@ -122,4 +173,5 @@ ul{
 
 .navbar-toggler {
   margin: auto;
-}</style>
+}
+</style>

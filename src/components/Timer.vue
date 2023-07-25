@@ -143,7 +143,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <h1 class="display-4 text-white">¿Cuanto falta para el proximo feriado?</h1>
+    <h1 class="display-4 text-white">¿Cuánto falta para el próximo feriado?</h1>
     <div  title="Días, Horas, Minutos, Segundos" class="timer">
         <h1 class="timer-text display-4 text-white text-nowrap">
             {{ time }}
