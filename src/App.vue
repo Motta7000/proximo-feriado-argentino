@@ -32,7 +32,7 @@ import { Icon } from '@iconify/vue';
     <div class="footer-container">
       <div class="flex-item">
         <h3>Más acerca de mi</h3>
-        <p>Soy estudiante de ingeniería en informática y estoy aprendiendo diversas tecnologías en este caso VueJs
+        <p>Soy estudiante de ingeniería en informática y estoy aprendiendo diversas tecnologías en este caso: VueJs
         </p>
       </div>
       <div class="flex-item">
