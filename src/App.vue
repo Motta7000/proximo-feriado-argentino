@@ -11,7 +11,7 @@ import { Icon } from '@iconify/vue';
     <div class="nav-container navbarnew">
       <nav style="justify-content: space-evenly;" class="navmain navbar navbar-expand-lg bg-body-tertiary">
         <div class="container">
-          <a class="navbar-brand" href="#">Próximo Feriado Argentino (Beta)</a>
+          <RouterLink class="nav-link navbar-brand titlenew" to="/">Proximo Feriado Argentino (Beta)</RouterLink>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -76,12 +76,17 @@ import { Icon } from '@iconify/vue';
 </template>
 
 <style scoped>
-.navbarnew{
-  border-bottom: #645955 solid 1px;
+.titlenew {
+  padding-left: 15px;
 }
-.anchor{
+
+.navbarnew {
+  border-bottom: #c0aba4 solid 1px;
+}
+
+.anchor {
   text-decoration: none;
-  color:#fff
+  color: #fff
 }
 
 .icon-container {
@@ -141,7 +146,7 @@ ul {
   display: flex;
   background-color: #252222;
   width: 100%;
-  min-height: 30px;
+  min-height: 45px;
   align-items: center;
   justify-content: center;
 }
