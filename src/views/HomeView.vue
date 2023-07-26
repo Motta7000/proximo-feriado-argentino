@@ -1,6 +1,6 @@
 <script setup>
-import { useDark, useToggle } from "@vueuse/core"
-import Timer from "../components/Timer.vue";
+
+import Timer from "../components/TimerComponent.vue";
 import Card from "../components/Card.vue"
 import { ref } from 'vue';
 import feriados from "../data/feriados.json"
@@ -8,7 +8,7 @@ let r = ref([]);
 
 console.log(feriados)
 
-function daysUntil(date) {
+function daysUntil() {
   var rightNow = new Date();
   rightNow = new Date((rightNow.getMonth() + 1) + ' ' + rightNow.getDate() + ', ' + rightNow.getFullYear() + ' ' + +' ' + rightNow.getHours() + ":" + rightNow.getMinutes() + ":" + rightNow.getSeconds())
 
@@ -44,7 +44,7 @@ function daysUntil(date) {
     console.log("i: " + i)
 
   }
-  let j;
+
   console.log("count: " + count)
   if (i > 10) {
     i = 0;
@@ -54,14 +54,14 @@ function daysUntil(date) {
       for (const date in esteMes) {
         if (date != 'mes' && count < cantFeriados) {
 
-          var launchDate = new Date(esteMes['mes'] + ' ' + date + ', ' + rightNow.getFullYear() + ' ' + +' ' + 0 + ":" + 0 + ":" + 0)
+          launchDate = new Date(esteMes['mes'] + ' ' + date + ', ' + rightNow.getFullYear() + ' ' + +' ' + 0 + ":" + 0 + ":" + 0)
           console.log(esteMes['mes'] + ' ' + date + ', ' + rightNow.getFullYear() + ' ' + +' ' + 0 + ":" + 0 + ":" + 0)
           launchDate.setFullYear(launchDate.getFullYear() + 1);
           console.log("Launch" + launchDate.getTime())
           console.log(esteMes['mes'] + ' ' + date + ', ' + (rightNow.getFullYear()) + ' ' + +' ' + 0 + ":" + 0 + ":" + 0)
 
           console.log("now: " + rightNow.getTime())
-          var DifferenceInDays = Math.floor((launchDate.getTime() - rightNow.getTime()) / (1000 * 3600 * 24))
+          DifferenceInDays = Math.floor((launchDate.getTime() - rightNow.getTime()) / (1000 * 3600 * 24))
           console.log("Difference: " + DifferenceInDays)
           if (DifferenceInDays > 0) {
             r.value.push({ 'days': DifferenceInDays, 'queSeCelebra': esteMes[date][0], 'date': esteMes[date][1], 'img': esteMes[date][2] })
@@ -78,48 +78,9 @@ function daysUntil(date) {
   }
 
 
-  function mapMonth(mes) {
-    switch (mes) {
-      case 'january':
-        return 0;
-        break;
-      case 'february':
-        return 1;
-        break;
-      case 'march':
-        return 2;
-        break;
-      case 'april':
-        return 3;
-        break;
-      case 'may':
-        return 4;
-        break;
-      case 'june':
-        return 5;
-        break;
-      case 'july':
-        return 6;
-        break;
-      case 'august':
-        return 7;
-        break;
-      case 'september':
-        return 8;
-        break;
-      case 'october':
-        return 9;
-        break;
-      case 'november':
-        return 10;
-        break;
-      case 'december':
-        return 11;
-        break;
-    }
-  }
+
 }
-daysUntil("a");
+daysUntil();
 </script>
 
 <template>

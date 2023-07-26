@@ -105,7 +105,7 @@ onMounted(() => {
   }
   // console.log(proxFeriado)
   const launchDateTime = proxFeriado.launchDate
-  queSeCelebra = proxFeriado.queSeCelebraAux
+  queSeCelebra.value = proxFeriado.queSeCelebraAux
   //  console.log(launchDateTime)
   const updateTimer = () => {
     const now = new Date().getTime();
