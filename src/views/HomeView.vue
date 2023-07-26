@@ -1,6 +1,6 @@
 <script setup>
 import { useDark, useToggle } from "@vueuse/core"
-import Timer from "../components/Timer.vue";
+import Timer from "../components/timer.vue";
 import Card from "../components/Card.vue"
 import { ref } from 'vue';
 import feriados from "../data/feriados.json"

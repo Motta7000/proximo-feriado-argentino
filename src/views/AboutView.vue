@@ -1,10 +1,28 @@
 <template>
-  <div class="hero vh-100 d-flex align-items-center">
+  <div class="hero d-flex align-items-center">
     <div class="container-hero">
       <div class="row">
         <div class="col-lg-7 mx-auto text-center">
-          <h1 >Sitio Web creado por Agustín Motta PRUEBA development</h1>
-          <Timer />
+          <h1 class="display-6">Este sitio web fue desarrollado usando Bootstrap, VueJs y un JSON creado por mí</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="body-about  d-flex align-items-center justify-content-center">
+    <div class="container-body">
+      <div class="about-flex">
+        <div class="col px-4">
+          <img class="img-about" alt="selfie" src="../assets/img/yo.jpg">
+        </div>
+        <div class="col px-4 flex-column">
+          <h1>Yo</h1>
+          <p>Soy estudiante de ingeniería en
+            informática en la UADE, me
+            interesa la programación y el desarrollo
+            web. Trabajo como Freelancer por lo que
+            trabajo bien sin que me controlen,
+            estableciéndome y cumpliendo con mis
+            propias metas.</p>
         </div>
       </div>
     </div>
@@ -12,6 +30,23 @@
 </template>
 
 <style>
+.img-about {
+  max-width: 400px;
+  border-radius: 100%;
+  border: 1px #c2c2c2 solid;
+}
+
+.col {
+  display: flex;
+  justify-content: center;
+}
+
+.about-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media (min-width: 1024px) {
   .about {
     min-height: 100vh;
@@ -20,14 +55,19 @@
   }
 }
 
-.hero {
+.body-about {
+  background-color: rgb(223, 237, 237);
+  height: 60vh;
+}
 
+.hero {
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
   position: relative;
   z-index: 2;
   justify-content: center;
+  height: 40vh;
 }
 
 .hero::after {
@@ -37,7 +77,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(239, 246, 246);
   z-index: -1;
 
 }
