@@ -1,14 +1,14 @@
 <template>
   <div class="hero d-flex align-items-center">
     <div class="container-hero">
-      <div class="row">
+      <div class="row rowagus">
         <div class="col-lg-7 mx-auto text-center">
           <h1 class="display-6">Este sitio web fue desarrollado usando Bootstrap, VueJs y un JSON creado por mí</h1>
         </div>
       </div>
     </div>
   </div>
-  <div class="body-about  d-flex align-items-center justify-content-center">
+  <div class="body-about py-5 d-flex align-items-center justify-content-center">
     <div class="container-body">
       <div class="about-flex">
         <div class="col px-4">
@@ -30,7 +30,15 @@
 </template>
 
 <style>
+.container-body{
+  height: 100%;
+}
+.rowagus {
+  width: 100%;
+}
+
 .img-about {
+  margin-top: 10px;
   max-width: 400px;
   border-radius: 100%;
   border: 1px #c2c2c2 solid;
@@ -45,6 +53,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100%;
 }
 
 @media (min-width: 1024px) {
@@ -53,11 +62,28 @@
     display: flex;
     align-items: center;
   }
+
+}
+
+@media screen and (max-width:1024px) {
+  .about-flex {
+    display: block;
+  }
+
+  .img-about {
+    max-width: 300px;
+
+  }
+}
+@media screen and (max-width:300px) {
+  .img-about {
+    max-width: 200px;
+
+  }
 }
 
 .body-about {
   background-color: rgb(223, 237, 237);
-  height: 60vh;
 }
 
 .hero {
