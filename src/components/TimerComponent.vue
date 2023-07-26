@@ -16,14 +16,15 @@ onMounted(() => {
 
   // console.log(feriados[rightNow.getMonth()])
   var esteMes = feriados[rightNow.getMonth()]
-
+  var launchDate = null;
+  var queSeCelebraAux;
   const getProximoFeriado = (start) => {
-    var launchDate = null;
+
 
     for (var i = start; i < feriados.length; i++) {
       esteMes = feriados[i]
       console.log(esteMes)
-      var queSeCelebraAux;
+
       for (const date in esteMes) {
         //    console.log(date)
         /*    console.log(date)

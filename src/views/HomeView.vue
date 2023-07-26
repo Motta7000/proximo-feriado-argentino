@@ -16,6 +16,8 @@ function daysUntil() {
   console.log(esteMes)
   var count = 0;
   var i = rightNow.getMonth();
+  var launchDate = null;
+  var DifferenceInDays;
   const cantFeriados = 50
   r.value.splice(0, r.value.length)
 
@@ -25,10 +27,10 @@ function daysUntil() {
     console.log(esteMes)
     for (const date in esteMes) {
       if (date != 'mes' && count < cantFeriados) {
-        var launchDate = new Date(esteMes['mes'] + ' ' + date + ', ' + rightNow.getFullYear() + ' ' + +' ' + 0 + ":" + 0 + ":" + 0)
+        launchDate = new Date(esteMes['mes'] + ' ' + date + ', ' + rightNow.getFullYear() + ' ' + +' ' + 0 + ":" + 0 + ":" + 0)
         console.log("Launch" + launchDate.getTime())
         console.log(esteMes['mes'] + ' ' + date + ', ' + rightNow.getFullYear() + ' ' + +' ' + 0 + ":" + 0 + ":" + 0)
-        var DifferenceInDays = Math.floor((launchDate.getTime() - rightNow.getTime()) / (1000 * 3600 * 24))
+        DifferenceInDays = Math.floor((launchDate.getTime() - rightNow.getTime()) / (1000 * 3600 * 24))
         console.log("Difference: " + DifferenceInDays)
         if (DifferenceInDays > 0) {
           r.value.push({ 'days': DifferenceInDays, 'queSeCelebra': esteMes[date][0], 'date': esteMes[date][1], 'img': esteMes[date][2] })
