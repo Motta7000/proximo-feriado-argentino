@@ -11,7 +11,7 @@ console.log(feriados)
 function daysUntil() {
   var rightNow = new Date();
   rightNow = new Date((rightNow.getMonth() + 1) + ' ' + rightNow.getDate() + ', ' + rightNow.getFullYear() + ' ' + +' ' + rightNow.getHours() + ":" + rightNow.getMinutes() + ":" + rightNow.getSeconds())
-
+  console.log(rightNow)
   var esteMes = feriados[rightNow.getMonth()]
   console.log(esteMes)
   var count = 0;
