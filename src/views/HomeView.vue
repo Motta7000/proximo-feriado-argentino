@@ -9,9 +9,12 @@ let r = ref([]);
 console.log(feriados)
 
 function daysUntil() {
+  var myDate = new Date('2018-01-22T13:00:00Z')
+  console.log(myDate)
   var rightNow = new Date();
-  // rightNow = new Date((rightNow.getMonth() + 1) + ' ' + rightNow.getDate() + ', ' + rightNow.getFullYear() + ' ' + +' ' + rightNow.getHours() + ":" + rightNow.getMinutes() + ":" + rightNow.getSeconds())
-  rightNow = new Date(rightNow.getFullYear() + '-' + (rightNow.getMonth() + 1) + '-' + rightNow.getDate() + ' ' + rightNow.getHours() + ":" + rightNow.getMinutes() + ":" + rightNow.getSeconds())
+  rightNow = new Date((rightNow.getMonth() + 1) + ' ' + rightNow.getDate() + ', ' + rightNow.getFullYear() + ' ' + +' ' + rightNow.getHours() + ":" + rightNow.getMinutes() + ":" + rightNow.getSeconds())
+  // console.log(rightNow.getFullYear() + '-' + (rightNow.getMonth() + 1) + '-' + rightNow.getDate() + 'T' + rightNow.getHours() + ":" + rightNow.getMinutes() + ":" + rightNow.getSeconds() + "Z")
+  //  rightNow = new Date('2023-07-27T20:09:15Z')
 
   console.log(rightNow)
   var esteMes = feriados[rightNow.getMonth()]
