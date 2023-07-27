@@ -18,7 +18,7 @@ function daysUntil() {
   var i = rightNow.getMonth();
   var launchDate = null;
   var DifferenceInDays;
-  const cantFeriados = 50
+  const cantFeriados = 19
   r.value.splice(0, r.value.length)
 
   while (count < cantFeriados && i <= 10) {

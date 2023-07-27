@@ -16,8 +16,7 @@
         </div>
         <div class="col px-4 flex-column">
           <h1>Yo</h1>
-          <p>Soy estudiante de ingeniería en
-            informática en la UADE, me
+          <p>Soy estudiante de la UADE, me
             interesa la programación y el desarrollo
             web. Trabajo como Freelancer por lo que
             trabajo bien sin que me controlen,
