@@ -117,6 +117,8 @@ daysUntil();
     <div class=" body d-flex align-items-center">
       <div class="py-2 container-body">
         <h1 class="pb-2">Próximos feriados</h1>
+        <input type="search" class="form-control">
+        <input type="submit" class="btn btn-primary boton">
         <div class="grid-container px-2">
           <Card v-for="feriado in r" :feriado="feriado" />
         </div>
@@ -127,6 +129,10 @@ daysUntil();
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@700&display=swap');
+
+.boton {
+  margin: auto;
+}
 
 h1 {
   text-align: center;
