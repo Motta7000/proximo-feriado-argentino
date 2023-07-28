@@ -11,7 +11,7 @@ console.log(feriados)
 function daysUntil() {
   var myDate = new Date('2018-01-22T13:00:00Z')
   console.log(myDate)
-  console.log(myDate.getMonth)
+  console.log(myDate.getMonth())
   var rightNow = new Date();
   let dia;
   let mes;
