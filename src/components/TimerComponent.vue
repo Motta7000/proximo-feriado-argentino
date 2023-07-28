@@ -6,12 +6,14 @@ let dias = ref('');
 let horas = ref('');
 let minutos = ref('');
 let segundos = ref('')
+import { toIso8601 } from '../functions/functions';
 
 var queSeCelebra = ref('')
 onMounted(() => {
   var rightNow = new Date()
   //console.log(rightNow)
-  rightNow = new Date((rightNow.getMonth() + 1) + ' ' + rightNow.getDate() + ', ' + rightNow.getFullYear() + ' ' + +' ' + rightNow.getHours() + ":" + rightNow.getMinutes() + ":" + rightNow.getSeconds())
+  let isoDates = toIso8601(rightNow.getMonth() + 1, rightNow.getDate(), rightNow.getHours(), rightNow.getMinutes(), rightNow.getSeconds())
+  rightNow = new Date(rightNow.getFullYear() + '-' + (isoDates.month) + '-' + isoDates.day + 'T' + isoDates.hour + ":" + isoDates.minute + ":" + isoDates.second + "Z")
   // console.log(rightNow.getMonth())
 
   // console.log(feriados[rightNow.getMonth()])
@@ -26,7 +28,6 @@ onMounted(() => {
       console.log(esteMes)
 
       for (const date in esteMes) {
-        //    console.log(date)
         /*    console.log(date)
             console.log(esteMes['mes'])
             console.log(mapMonth(esteMes['mes']) + ' VS ' +rightNow.getMonth())
