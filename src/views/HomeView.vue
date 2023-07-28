@@ -11,7 +11,43 @@ console.log(feriados)
 function daysUntil() {
   var myDate = new Date('2018-01-22T13:00:00Z')
   console.log(myDate)
+  console.log(myDate.getMonth)
   var rightNow = new Date();
+  let dia;
+  let mes;
+  let horas;
+  let minutos;
+  function toIso8601(month, day, hour, minute, second) {
+
+  }
+  if (rightNow.getDate() < 10) {
+    dia = '0' + rightNow.getDate()
+  }
+  else {
+    dia = rightNow.getDate();
+  }
+
+  if (rightNow.getMonth() < 10) {
+    mes = '0' + rightNow.getMonth();
+  }
+  else {
+    mes = rightNow.getMonth();
+  }
+
+  if (rightNow.getHours() < 10) {
+    horas = '0' + rightNow.getHours()
+  }
+  else {
+    horas = rightNow.getHours();
+  }
+  if (rightNow.getMinutes()) {
+    minutos = '0' + rightNow.getMinutes();
+  }
+  else {
+    minutos = rightNow.getMinutes()
+  }
+
+  console.log(dia)
   rightNow = new Date((rightNow.getMonth() + 1) + ' ' + rightNow.getDate() + ', ' + rightNow.getFullYear() + ' ' + +' ' + rightNow.getHours() + ":" + rightNow.getMinutes() + ":" + rightNow.getSeconds())
   // console.log(rightNow.getFullYear() + '-' + (rightNow.getMonth() + 1) + '-' + rightNow.getDate() + 'T' + rightNow.getHours() + ":" + rightNow.getMinutes() + ":" + rightNow.getSeconds() + "Z")
   //  rightNow = new Date('2023-07-27T20:09:15Z')
