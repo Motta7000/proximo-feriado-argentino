@@ -13,45 +13,52 @@ function daysUntil() {
   console.log(myDate)
   console.log(myDate.getMonth())
   var rightNow = new Date();
-  let dia;
-  let mes;
-  let horas;
-  let minutos;
+
   function toIso8601(month, day, hour, minute, second) {
-
+    if (month < 10) {
+      month = '0' + month;
+    }
+    else {
+      month = month.toString()
+    }
+    if (day < 10) {
+      day = '0' + day;
+    }
+    else {
+      day = day.toString()
+    }
+    if (hour < 10) {
+      hour = '0' + hour;
+    }
+    else {
+      hour = hour.toString()
+    }
+    if (minute < 10) {
+      minute = '0' + minute;
+    }
+    else {
+      minute = minute.toString();
+    }
+    if (second < 10) {
+      second = '0' + second;
+    }
+    else {
+      second = second.toString()
+    }
+    return {
+      "month": month,
+      "day": day,
+      "hour": hour,
+      "minute": minute,
+      "second": second
+    }
   }
-  if (rightNow.getDate() < 10) {
-    dia = '0' + rightNow.getDate()
-  }
-  else {
-    dia = rightNow.getDate();
-  }
-
-  if (rightNow.getMonth() < 10) {
-    mes = '0' + rightNow.getMonth();
-  }
-  else {
-    mes = rightNow.getMonth();
-  }
-
-  if (rightNow.getHours() < 10) {
-    horas = '0' + rightNow.getHours()
-  }
-  else {
-    horas = rightNow.getHours();
-  }
-  if (rightNow.getMinutes()) {
-    minutos = '0' + rightNow.getMinutes();
-  }
-  else {
-    minutos = rightNow.getMinutes()
-  }
-
-  console.log(dia)
-  rightNow = new Date((rightNow.getMonth() + 1) + ' ' + rightNow.getDate() + ', ' + rightNow.getFullYear() + ' ' + +' ' + rightNow.getHours() + ":" + rightNow.getMinutes() + ":" + rightNow.getSeconds())
-  // console.log(rightNow.getFullYear() + '-' + (rightNow.getMonth() + 1) + '-' + rightNow.getDate() + 'T' + rightNow.getHours() + ":" + rightNow.getMinutes() + ":" + rightNow.getSeconds() + "Z")
+  let isoDates = toIso8601(rightNow.getMonth() + 1, rightNow.getDate(), rightNow.getHours(), rightNow.getMinutes(), rightNow.getSeconds())
+  // rightNow = new Date((rightNow.getMonth() + 1) + ' ' + rightNow.getDate() + ', ' + rightNow.getFullYear() + ' ' + +' ' + rightNow.getHours() + ":" + rightNow.getMinutes() + ":" + rightNow.getSeconds())
+  //  rightNow = new Date(isoDates.month + '-' + rightNow.getDate() + ', ' + rightNow.getFullYear() + ' ' + +' ' + rightNow.getHours() + ":" + rightNow.getMinutes() + ":" + rightNow.getSeconds())
+  rightNow = new Date(rightNow.getFullYear() + '-' + (isoDates.month) + '-' + isoDates.day + 'T' + isoDates.hour + ":" + isoDates.minute + ":" + isoDates.second + "Z")
   //  rightNow = new Date('2023-07-27T20:09:15Z')
-
+  console.log("RightNow:")
   console.log(rightNow)
   var esteMes = feriados[rightNow.getMonth()]
   console.log(esteMes)
