@@ -43,7 +43,7 @@ function daysUntil() {
         DifferenceInDays = Math.floor((launchDate.getTime() - rightNow.getTime()) / (1000 * 3600 * 24))
         console.log("Difference: " + DifferenceInDays)
         if (DifferenceInDays > 0) {
-          r.value.push({ 'days': DifferenceInDays, 'queSeCelebra': esteMes[date][0], 'date': esteMes[date][1], 'img': esteMes[date][2] })
+          r.value.push({ 'days': DifferenceInDays, 'queSeCelebra': esteMes[date][0], 'date': esteMes[date][1], 'img': esteMes[date][2], 'alt': esteMes[date][3] })
           count++;
         }
 
@@ -76,7 +76,7 @@ function daysUntil() {
           DifferenceInDays = Math.floor((launchDate.getTime() - rightNow.getTime()) / (1000 * 3600 * 24))
           console.log("Difference: " + DifferenceInDays)
           if (DifferenceInDays > 0) {
-            r.value.push({ 'days': DifferenceInDays, 'queSeCelebra': esteMes[date][0], 'date': esteMes[date][1], 'img': esteMes[date][2] })
+            r.value.push({ 'days': DifferenceInDays, 'queSeCelebra': esteMes[date][0], 'date': esteMes[date][1], 'img': esteMes[date][2], 'alt': esteMes[date][3] })
             count++;
           }
 

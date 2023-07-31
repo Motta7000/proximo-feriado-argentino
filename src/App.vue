@@ -78,6 +78,7 @@ import { Icon } from '@iconify/vue';
 <style scoped>
 .titlenew {
   padding-left: 15px;
+  text-wrap: wrap;
 }
 
 .navbarnew {
@@ -171,9 +172,7 @@ ul {
   --text-primary-color: #ddd;
 }
 
-.container {
-  justify-content: space-around;
-}
+.container {}
 
 .collapse {
   justify-content: flex-end;

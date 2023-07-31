@@ -1,4 +1,5 @@
 <template>
+  <title>Acerca de</title>
   <div class="hero d-flex align-items-center">
     <div class="container-hero">
       <div class="row rowagus">
