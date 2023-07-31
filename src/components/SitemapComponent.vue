@@ -13,7 +13,7 @@
 export default {
     data() {
         return {
-            baseUrl: 'https://proximoferiadoargentino.com.ar', // Replace with your website's base URL
+            baseUrl: 'https://proximoferiadoargentino.com.ar',
         };
     },
     computed: {
@@ -29,3 +29,4 @@ export default {
     },
 };
 </script>
+  
