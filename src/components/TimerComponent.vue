@@ -6,6 +6,7 @@ let dias = ref('');
 let horas = ref('');
 let minutos = ref('');
 let segundos = ref('')
+let esHoy = ref(false);
 import { toIso8601 } from '../functions/functions';
 
 var queSeCelebra = ref('')
@@ -32,7 +33,16 @@ onMounted(() => {
             console.log(esteMes['mes'])
             console.log(mapMonth(esteMes['mes']) + ' VS ' +rightNow.getMonth())
             */
+
+        if (mapMonth(esteMes['mes']) == rightNow.getMonth() && date == rightNow.getDate()) {
+          esHoy.value = true;
+          queSeCelebraAux = esteMes[date]
+          console.log(queSeCelebraAux)
+          return { launchDate: 0, queSeCelebraAux }
+        }
+        // Si el mes el cual estamos recorriendo es igual al mes actual y el dia es mas alto que el dia del presente entonces esteMes[date] tiene el proximo feriado mas cercano
         if (mapMonth(esteMes['mes']) == rightNow.getMonth() && date > rightNow.getDate()) {
+          esHoy.value = false;
           launchDate = new Date(esteMes['mes'] + ' ' + date + ', ' + rightNow.getFullYear() + ' ' + +' ' + 0 + ":" + 0 + ":" + 0)
           //      console.log(launchDate)
 
@@ -43,7 +53,9 @@ onMounted(() => {
           return { launchDate, queSeCelebraAux }
         }
         //   console.log(mapMonth(esteMes['mes']) + ' VS ' + rightNow.getMonth())
+        //Si el mes el cual estamos recorriendo es mas alto que el mes actual entonces el primer feriado de ese mes es el proximo feriado mas cercano
         if (mapMonth(esteMes['mes']) > rightNow.getMonth()) {
+          esHoy.value = false;
           //       console.log(esteMes['mes'] + ' ' + date + ', ' + rightNow.getFullYear() + ' ' + +' ' + 0 + ":" + 0 + ":" + 0)
           launchDate = new Date(esteMes['mes'] + ' ' + date + ', ' + rightNow.getFullYear() + ' ' + +' ' + 0 + ":" + 0 + ":" + 0)
           console.log(date)
@@ -108,54 +120,60 @@ onMounted(() => {
   // console.log(proxFeriado)
   const launchDateTime = proxFeriado.launchDate
   queSeCelebra.value = proxFeriado.queSeCelebraAux
+  console.log(queSeCelebra.value)
   //  console.log(launchDateTime)
-  const updateTimer = () => {
-    const now = new Date().getTime();
-    const t = launchDateTime - now;
+  if (esHoy.value == false) {
+    const updateTimer = () => {
+      const now = new Date().getTime();
+      const t = launchDateTime - now;
 
-    if (t > 0) {
-      let days = Math.floor(t / (1000 * 60 * 60 * 24));
-      if (days < 10) {
-        days = '0' + days;
+      if (t > 0) {
+        let days = Math.floor(t / (1000 * 60 * 60 * 24));
+        if (days < 10) {
+          days = '0' + days;
+        }
+
+        let hours = Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        if (hours < 10) {
+          hours = '0' + hours;
+        }
+
+        let mins = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
+        if (mins < 10) {
+          mins = '0' + mins;
+        }
+
+        let secs = Math.floor((t % (1000 * 60)) / 1000);
+        if (secs < 10) {
+          secs = '0' + secs;
+        }
+
+        time.value = `${days} : ${hours} : ${mins} : ${secs}`;
+        dias.value = days;
+        horas.value = hours;
+        minutos.value = mins;
+        segundos.value = secs;
+
+
+        //    console.log(time.value);
+      } else {
+        clearInterval(intervalId);
       }
+    };
+    console.log(queSeCelebra.value)
 
-      let hours = Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      if (hours < 10) {
-        hours = '0' + hours;
-      }
+    // Update the timer every second
+    updateTimer();
+    const intervalId = setInterval(updateTimer, 1000);
+  }
 
-      let mins = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
-      if (mins < 10) {
-        mins = '0' + mins;
-      }
-
-      let secs = Math.floor((t % (1000 * 60)) / 1000);
-      if (secs < 10) {
-        secs = '0' + secs;
-      }
-
-      time.value = `${days} : ${hours} : ${mins} : ${secs}`;
-      dias.value = days;
-      horas.value = hours;
-      minutos.value = mins;
-      segundos.value = secs;
-
-
-      //    console.log(time.value);
-    } else {
-      clearInterval(intervalId);
-    }
-  };
-
-  // Update the timer every second
-  updateTimer();
-  const intervalId = setInterval(updateTimer, 1000);
 });
 </script>
 
 <template>
-  <h1 class="display-4 text-white">¿Cuánto falta para el próximo feriado?</h1>
-  <div title="Días, Horas, Minutos, Segundos" class="timer">
+  <h1 v-if="!esHoy" class="display-4 text-white">¿Cuánto falta para el próximo feriado?</h1>
+  <h1 v-else class="display-4 text-white">¡Feliz Feriado!</h1>
+  <div v-if="!esHoy" title="Días, Horas, Minutos, Segundos" class="timer">
     <h1 class="timer-text display-4 text-white text-nowrap">
       {{ time }}
     </h1>

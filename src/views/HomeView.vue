@@ -13,8 +13,6 @@ function daysUntil() {
   console.log(myDate)
   console.log(myDate.getMonth())
   var rightNow = new Date();
-
-
   let isoDates = toIso8601(rightNow.getMonth() + 1, rightNow.getDate(), rightNow.getHours(), rightNow.getMinutes(), rightNow.getSeconds())
   // rightNow = new Date((rightNow.getMonth() + 1) + ' ' + rightNow.getDate() + ', ' + rightNow.getFullYear() + ' ' + +' ' + rightNow.getHours() + ":" + rightNow.getMinutes() + ":" + rightNow.getSeconds())
   //  rightNow = new Date(isoDates.month + '-' + rightNow.getDate() + ', ' + rightNow.getFullYear() + ' ' + +' ' + rightNow.getHours() + ":" + rightNow.getMinutes() + ":" + rightNow.getSeconds())
@@ -65,13 +63,11 @@ function daysUntil() {
       console.log(esteMes)
       for (const date in esteMes) {
         if (date != 'mes' && count < cantFeriados) {
-
           launchDate = new Date(esteMes['mes'] + ' ' + date + ', ' + rightNow.getFullYear() + ' ' + +' ' + 0 + ":" + 0 + ":" + 0)
           console.log(esteMes['mes'] + ' ' + date + ', ' + rightNow.getFullYear() + ' ' + +' ' + 0 + ":" + 0 + ":" + 0)
           launchDate.setFullYear(launchDate.getFullYear() + 1);
           console.log("Launch" + launchDate.getTime())
           console.log(esteMes['mes'] + ' ' + date + ', ' + (rightNow.getFullYear()) + ' ' + +' ' + 0 + ":" + 0 + ":" + 0)
-
           console.log("now: " + rightNow.getTime())
           DifferenceInDays = Math.floor((launchDate.getTime() - rightNow.getTime()) / (1000 * 3600 * 24))
           console.log("Difference: " + DifferenceInDays)
@@ -117,10 +113,10 @@ daysUntil();
     <div class=" body d-flex align-items-center">
       <div class="py-2 container-body">
         <h1 class="pb-2">Próximos feriados</h1>
-        <!--
+
         <input type="search" class="form-control">
         <input type="submit" class="btn btn-primary boton">
-              -->
+
         <div class="grid-container px-2">
           <Card v-for="feriado in r" :feriado="feriado" />
         </div>
