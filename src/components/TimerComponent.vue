@@ -176,6 +176,7 @@ onMounted(() => {
   <div v-if="!esHoy" title="Días, Horas, Minutos, Segundos" class="timer">
     <h1 class="timer-text display-4 text-white text-nowrap">
       {{ time }}
+
     </h1>
     <!-- <h1 class="timer-text timer-explained text-white text-nowrap">Días</h1>-->
   </div>
@@ -189,6 +190,14 @@ onMounted(() => {
 </template>
 
 <style scoped>
+.helpText {
+  position: static;
+  margin-left: 70px;
+
+  font-size: 12px;
+  float: left
+}
+
 .flex-calendar {
   display: flex;
   flex-direction: column;
@@ -223,8 +232,9 @@ div {
 }
 
 .timer-text {
-  margin: 0;
+  margin: auto;
   position: relative;
+  width: min-content;
 }
 
 li {
