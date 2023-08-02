@@ -5,8 +5,18 @@ import Card from "../components/Card.vue"
 import { ref } from 'vue';
 import feriados from "../data/feriados.json"
 import { toIso8601 } from "../functions/functions";
+import { watchArray } from "@vueuse/core";
+import { Icon } from '@iconify/vue';
+
 let r = ref([]);
-console.log(feriados)
+const rAux = ref([]);
+console.log(feriados);
+const search = ref("");
+
+watchArray(search, () => {
+  console.log("Hello from watch")
+  r.value = rAux.value.filter(f => f.queSeCelebra.toLowerCase().includes(search.value.toLowerCase()))
+})
 
 function daysUntil() {
   var myDate = new Date('2018-01-22T13:00:00Z')
@@ -72,7 +82,7 @@ function daysUntil() {
           DifferenceInDays = Math.floor((launchDate.getTime() - rightNow.getTime()) / (1000 * 3600 * 24))
           console.log("Difference: " + DifferenceInDays)
           if (DifferenceInDays > 0) {
-            r.value.push({ 'days': DifferenceInDays, 'queSeCelebra': esteMes[date][0], 'date': esteMes[date][1], 'img': esteMes[date][2], 'alt': esteMes[date][3] })
+            r.value.push({ 'days': DifferenceInDays, 'queSeCelebra': esteMes[date][0], 'date': esteMes[date][1], 'img': esteMes[date][2], 'alt': esteMes[date][3], 'googleCalendar': esteMes[date][4] })
             count++;
           }
 
@@ -85,6 +95,8 @@ function daysUntil() {
     }
   }
   r.value.shift()
+
+  rAux.value = r.value;
 }
 daysUntil();
 </script>
@@ -113,9 +125,10 @@ daysUntil();
     <div class=" body d-flex align-items-center">
       <div class="py-2 container-body">
         <h1 class="pb-2">Próximos feriados</h1>
-
-        <input type="search" class="form-control">
-        <input type="submit" class="btn btn-primary boton">
+        <div class="search-container pb-3">
+          <input v-model.trim="search" type="search" id="search" class="form-control">
+          <Icon icon="material-symbols:search" width="40" height="40"></Icon>
+        </div>
 
         <div class="grid-container px-2">
           <Card v-for="feriado in r" :feriado="feriado" />
@@ -127,6 +140,14 @@ daysUntil();
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@700&display=swap');
+
+Icon {
+  height: 300px;
+}
+
+.search-container {
+  display: flex;
+}
 
 .boton {
   margin: auto;

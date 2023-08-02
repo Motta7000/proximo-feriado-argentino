@@ -189,6 +189,15 @@ onMounted(() => {
 </template>
 
 <style scoped>
+.flex-calendar {
+  display: flex;
+  flex-direction: column;
+}
+
+img {
+  max-width: 100px;
+}
+
 .units {
   position: absolute;
   top: 1px
@@ -222,8 +231,18 @@ li {
   list-style-type: none;
 }
 
-h1 {
+a {
+  color: #fff
+}
+
+h1,
+a {
   font-family: Arial, Helvetica, sans-serif;
   text-shadow: 2px 1px 2px rgb(0, 0, 0, 0.8);
+}
+
+a:hover {
+  color: #fff;
+  background-color: #fff0;
 }
 </style>
