@@ -3,7 +3,7 @@
 import Timer from "../components/TimerComponent.vue";
 import Card from "../components/Card.vue"
 import { ref } from 'vue';
-import feriados from "../data/feriados.json"
+import feriadosRaw from "../data/feriados.json"
 import { toIso8601 } from "../functions/functions";
 import { watchArray } from "@vueuse/core";
 import { Icon } from '@iconify/vue';
@@ -11,7 +11,7 @@ import { routerViewLocationKey } from "vue-router";
 
 let r = ref([]);
 const rAux = ref([]);
-console.log(feriados);
+
 const search = ref("");
 
 watchArray(search, () => {
@@ -32,14 +32,15 @@ function daysUntil() {
   //  rightNow = new Date('2023-07-27T20:09:15Z')
   console.log("RightNow:")
   console.log(rightNow)
-
+  var feriados = feriadosRaw[rightNow.getFullYear()]
+  console.log(feriados);
   var esteMes = feriados[rightNow.getMonth()]
   console.log(esteMes)
   var count = 0;
   var i = rightNow.getMonth();
   var launchDate = null;
   var DifferenceInDays;
-  const cantFeriados = 16
+  const cantFeriados = 26
   r.value.splice(0, r.value.length)
 
   while (count < cantFeriados && i <= 10) {
@@ -70,6 +71,8 @@ function daysUntil() {
   console.log("count: " + count)
   if (i > 10) { // si la i>10 entonces nos fuimos al año que viene
     i = 0;
+    feriados = feriadosRaw[rightNow.getFullYear() + 1]
+    console.log(feriados)
     while (i <= 10 && count < cantFeriados) {
       esteMes = feriados[i]
       console.log(esteMes)
@@ -127,7 +130,7 @@ daysUntil();
       <div class="py-2 container-body">
         <h1 class="pb-2">Próximos feriados</h1>
         <div class="search-container pb-3 px-3">
-          <input v-model.trim="search" type="search" id="search" class="form-control">
+          <input v-model.trim="search" type="search" id="search" class="form-control" placeholder="Nombre del feriado">
           <Icon icon="material-symbols:search" width="40" height="40"></Icon>
         </div>
         <div v-if="r.length > 0">

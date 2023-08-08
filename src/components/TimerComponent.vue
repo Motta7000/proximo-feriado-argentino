@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted } from 'vue';
-import feriados from '../data/feriados.json'
+import feriadosRaw from '../data/feriados.json'
 let time = ref('');
 let dias = ref('');
 let horas = ref('');
@@ -18,6 +18,7 @@ onMounted(() => {
   // console.log(rightNow.getMonth())
 
   // console.log(feriados[rightNow.getMonth()])
+  var feriados = feriadosRaw[rightNow.getFullYear()]
   var esteMes = feriados[rightNow.getMonth()]
   var launchDate = null;
   var queSeCelebraAux;
@@ -120,7 +121,7 @@ onMounted(() => {
   // console.log(proxFeriado)
   const launchDateTime = proxFeriado.launchDate
   queSeCelebra.value = proxFeriado.queSeCelebraAux
-  queSeCelebra.value[1] = queSeCelebra.value[1] + "/" + rightNow.getFullYear()
+  // queSeCelebra.value[1] = queSeCelebra.value[1] + "/" + rightNow.getFullYear()
   console.log(queSeCelebra.value)
   //  console.log(launchDateTime)
   if (esHoy.value == false) {
