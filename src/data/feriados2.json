@@ -1,143 +1,131 @@
-[{
-    "mes": "enero",
-    "1": "Año Nuevo",
-    "6": "Día de Reyes",
-    "7": "Día del coleccionista",
-    "10": "Día de los trabajadores del transporte",
-    "21": "Santa Inés",
-    "28": "Santo Tomás de Aquino"
-  }, {
-    "mes": "febrero",
-    "04": "Día del guardavidas",
-    "05": "Día del trabajador deportivo",
-    "06": "Día del guardabosque",
-    "11": "Nuestra Sra. de Lourdes",
-    "14": "Día de San Valentín",
-    "15": "Día del redactor publicitario",
-    "21": "Día internacional de la lengua materna",
-    "22": "Día de la Antártida Argentina",
-    "24": "Día del mecánico automotor"
-  }, {
-    "mes": "marzo",
-    "1": "Día del transporte",
-    "4": "Día del campo (1er sábado)",
-    "6": "Día del escultor en Argentina",
-    "8": "Día Internacional de la Mujer",
-    "12": "Día del escudo nacional argentino",
-    "14": [
-      "Día de las escuelas de fronteras",
-      "Día del trabajador de la alimentación"
-    ],
-    "16": "Día de la seguridad",
-    "17": "Día de San Patricio",
-    "18": [
-      "Día del ruralista en Argentina",
-      "Día del trabajador telefónico"
-    ],
-    "19": [
-      "Día del artesano",
-      "Día del carpintero",
-      "San José"
-    ],
-    "20": "Día de la energía eléctrica",
-    "21": [
-      "Día forestal mundial",
-      "Comienza el Otoño en el Hemisferio Sur",
-      "Día mundial de la poesía",
-      "Día internacional contra la discriminación"
-    ],
-    "22": "Día mundial del agua",
-    "23": [
-      "Día mundial de la rehabilitación",
-      "Día mundial de la meteorología"
-    ],
-    "24": [
-      "Día del diplomático",
-      "Día Nacional de la Memoria",
-      "San Gabriel"
-    ],
-    "25": "Día del niño por nacer",
-    "26": "Día del Mercosur",
-    "27": [
-      "Día del trabajador aeronáutico",
-      "Día mundial del teatro"
-    ],
-    "31": "La hora del planeta"
-  }, {
-    "mes": "abril",
-    "calculated": {
-      "first_sunday": "Día de la Novia (primer domingo de abril)"
-    },
-    "2": [
-      "Día del papelero",
-      "Día internacional del libro infantil"
-    ],
-    "3": "Día del modelo y de la modelo",
-    "7": "Día mundial de la salud",
-    "10": "Día del investigador científico",
-    "12": "Día del decorador",
-    "13": "Día del kinesiólogo",
-    "14": "Día de las Américas",
-    "15": "Día mundial de las artes",
-    "21": "Día del traductor en Argentina",
-    "22": [
-      "Día mundial de la tierra",
-      "Día del trabajador de la construcción"
-    ],
-    "23": [
-      "Día del matrimonio",
-      "Día mundial del idioma español",
-      "Día mundial del libro y del derecho de autor"
-    ],
-    "26": "Día del librero",
-    "27": "Día del agente de viajes",
-    "29": [
-      "Día internacional de la danza",
-      "Día del animal"
+[
+  {
+    "mes": "january",
+    "1": [
+      "Año Nuevo",
+      "1/1",
+      "https://i.ibb.co/Wfk1Q3R/anio-nuevo.jpg",
+      "Año Nuevo - Proximo Feriado Argentino"
     ]
-  }, {
-    "mes": "mayo",
+  },
+  {
+    "mes": "february",
+    "12": [
+      "Carnaval",
+      "12/2",
+      "https://i.ibb.co/vc1Zrs8/carnaval-1.jpg",
+      "Carnaval - Proximo Feriado Argentino"
+    ],
+    "13": [
+      "Carnaval Segundo día",
+      "13/2",
+      "https://i.ibb.co/zVdjYpz/carnaval-2.jpg",
+      "Carnaval - Proximo Feriado Argentino"
+    ]
+  },
+  {
+    "mes": "march",
+    "24": [
+      "Día Nacional de la Memoria por la Verdad y la Justicia",
+      "24/3",
+      "https://i.ibb.co/k2F1bPx/nunca-Mas.jpg",
+      "Nunca Mas Dictadura Militar Argentina 1976 - Proximo Feriado Argentino"
+    ],
+    "29": [
+      "Viernes Santo Festividad Cristiana",
+      "29/3",
+      "https://i.ibb.co/v4dxnTp/viernes-santo.jpg",
+      "Religion Cristiana - Proximo Feriado Argentino"
+    ]
+  },
+  {
+    "mes": "april",
+    "2": [
+      "Día del Veterano y de los Caídos en la Guerra de Malvinas",
+      "2/4",
+      "https://i.ibb.co/kMKxWdT/malvinas.jpg",
+      "Veteranos de las islas malvinas argentinas - Proximo Feriado Argentino"
+    ]
+  },
+  {
+    "mes": "may",
     "1": [
       "Día Internacional del Trabajo",
-      "Día de la Constitución Argentina"
+      "1/5",
+      "https://i.ibb.co/QfFFYgv/trabajador.jpg",
+      "Herreria - Proximo Feriado Argentino"
     ],
-    "3": [
-      "Día mundial de la libertad de prensa",
-      "Santos Felipe y Santiago, apóstoles"
+    "25": [
+      "Aniversario de la Revolución de 1810",
+      "25/5",
+      "https://i.ibb.co/mq6BxHK/revolucion-de-mayo.jpg",
+      "Aniversario de la Revolución de 1810 - Proximo Feriado Argentino"
+    ]
+  },
+  {
+    "mes": "june",
+    "20": [
+      "Paso a la Inmortalidad del Gral. Manuel Belgrano",
+      "20/6",
+      "https://i.ibb.co/LrcXxDH/belgrano.jpg",
+      "Manuel Belgrano Con La Bandera Argentina - Proximo Feriado Argentino"
+    ]
+  },
+  {
+    "mes": "july",
+    "9": [
+      "Día de la independencia Argentina",
+      "9/7",
+      "https://i.ibb.co/68KHsSH/tucuman.jpg",
+      "Casa De Tucuman - Proximo Feriado Argentino"
+    ]
+  },
+  {
+    "mes": "august",
+    "21": [
+      "Aniversario de José de San Martín",
+      "21/8",
+      "https://i.ibb.co/WFhbWwh/san-martin.jpg",
+      "San Martin - Proximo Feriado Argentino"
+    ]
+  },
+  {
+    "mes": "october",
+    "13": [
+      "Feriado con fines turísticos",
+      "13/10",
+      "https://i.ibb.co/Z8vMxmj/travel.jpg",
+      "Turismo - Proximo Feriado Argentino"
     ],
-    "6": "Día mundial del filatelista",
-    "7": "Día del taxista",
+    "16": [
+      "Día de la diversidad cultural",
+      "16/10",
+      "https://i.ibb.co/T4STfrh/cultural.jpg",
+      "Diversidad Cultural - Proximo Feriado Argentino"
+    ]
+  },
+  {
+    "mes": "november",
+    "20": [
+      "Día de la Soberanía Nacional",
+      "20/11",
+      "https://i.ibb.co/wpYmG3S/argentina.jpg",
+      "Bandera Argentina - Proximo Feriado Argentino"
+    ]
+  },
+  {
+    "mes": "december",
     "8": [
-      "Día Internacional de la Cruz Roja",
-      "Día nacional del actor en Argentina"
+      "Inmaculada Concepción de María",
+      "8/12",
+      "https://i.ibb.co/6vCTQFz/maria.jpg",
+      "Virgen Maria - Proximo Feriado Argentino"
     ],
-    "11": [
-      "Día del autor y del compositor",
-      "Día del Himno Nacional Argentino"
-    ],
-    "12": [
-      "Día del fonoaudiólogo",
-      "Día internacional de la enfermera"
-    ],
-    "14": [
-      "Día del dirigente de fútbol",
-      "Día del ahijado",
-      "Día del nieto en Argentina"
-    ],
-    "15": [
-      "Día internacional de la familia",
-      "Día del docente universitario"
-    ],
-    "17": [
-      "Día mundial de las telecomunicaciones",
-      "Día internacional de Internet"
-    ],
-    "18": [
-      "Día internacional de los museos",
-      "Día de la escarapela en Argentina"
-    ],
-    "20": "Día del futbolista",
-    "21": "Día mundial de la diversidad cultural",
-    "25": "Aniversario de la Revolución de 1810",
-    "26": "Día del visitador médico"
-  }]
+    "25": [
+      "Navidad",
+      "25/12",
+      "https://i.ibb.co/1bPF51Q/navidad.jpg",
+      "Navidad - Proximo Feriado Argentino"
+    ]
+  }
+]

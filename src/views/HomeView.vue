@@ -7,6 +7,7 @@ import feriados from "../data/feriados.json"
 import { toIso8601 } from "../functions/functions";
 import { watchArray } from "@vueuse/core";
 import { Icon } from '@iconify/vue';
+import { routerViewLocationKey } from "vue-router";
 
 let r = ref([]);
 const rAux = ref([]);
@@ -16,6 +17,7 @@ const search = ref("");
 watchArray(search, () => {
   console.log("Hello from watch")
   r.value = rAux.value.filter(f => f.queSeCelebra.toLowerCase().includes(search.value.toLowerCase()))
+
 })
 
 function daysUntil() {
@@ -30,6 +32,7 @@ function daysUntil() {
   //  rightNow = new Date('2023-07-27T20:09:15Z')
   console.log("RightNow:")
   console.log(rightNow)
+
   var esteMes = feriados[rightNow.getMonth()]
   console.log(esteMes)
   var count = 0;
@@ -40,7 +43,6 @@ function daysUntil() {
   r.value.splice(0, r.value.length)
 
   while (count < cantFeriados && i <= 10) {
-
     esteMes = feriados[i]
     console.log(esteMes)
     for (const date in esteMes) {
@@ -51,7 +53,7 @@ function daysUntil() {
         DifferenceInDays = Math.floor((launchDate.getTime() - rightNow.getTime()) / (1000 * 3600 * 24))
         console.log("Difference: " + DifferenceInDays)
         if (DifferenceInDays > 0) {
-          r.value.push({ 'days': DifferenceInDays, 'queSeCelebra': esteMes[date][0], 'date': esteMes[date][1], 'img': esteMes[date][2], 'alt': esteMes[date][3] })
+          r.value.push({ 'days': DifferenceInDays, 'queSeCelebra': esteMes[date][0], 'date': esteMes[date][1] + "/" + rightNow.getFullYear(), 'img': esteMes[date][2], 'alt': esteMes[date][3] })
           count++;
         }
 
@@ -66,7 +68,7 @@ function daysUntil() {
   }
 
   console.log("count: " + count)
-  if (i > 10) {
+  if (i > 10) { // si la i>10 entonces nos fuimos al año que viene
     i = 0;
     while (i <= 10 && count < cantFeriados) {
       esteMes = feriados[i]
@@ -82,10 +84,9 @@ function daysUntil() {
           DifferenceInDays = Math.floor((launchDate.getTime() - rightNow.getTime()) / (1000 * 3600 * 24))
           console.log("Difference: " + DifferenceInDays)
           if (DifferenceInDays > 0) {
-            r.value.push({ 'days': DifferenceInDays, 'queSeCelebra': esteMes[date][0], 'date': esteMes[date][1], 'img': esteMes[date][2], 'alt': esteMes[date][3], 'googleCalendar': esteMes[date][4] })
+            r.value.push({ 'days': DifferenceInDays, 'queSeCelebra': esteMes[date][0], 'date': esteMes[date][1] + "/" + (rightNow.getFullYear() + 1), 'img': esteMes[date][2], 'alt': esteMes[date][3], 'googleCalendar': esteMes[date][4] })
             count++;
           }
-
           console.log("i: " + i)
           console.log("count: " + count)
           console.log(r)
@@ -122,17 +123,26 @@ daysUntil();
         </div>
       </div>
     </div>
-    <div class=" body d-flex align-items-center">
+    <div class=" body d-flex align-items-center ">
       <div class="py-2 container-body">
         <h1 class="pb-2">Próximos feriados</h1>
-        <div class="search-container pb-3">
+        <div class="search-container pb-3 px-3">
           <input v-model.trim="search" type="search" id="search" class="form-control">
           <Icon icon="material-symbols:search" width="40" height="40"></Icon>
         </div>
-
-        <div class="grid-container px-2">
-          <Card v-for="feriado in r" :feriado="feriado" />
+        <div v-if="r.length > 0">
+          <div class="grid-container px-2">
+            <Card v-for="feriado in r" :feriado="feriado" />
+          </div>
         </div>
+        <div class="grid-container-empty px-2" v-else>
+          <div> </div>
+          <div class="flex-item">
+            <p><i>No se Encontraron Feriados...</i></p>
+          </div>
+          <div></div>
+        </div>
+
       </div>
     </div>
   </main>
@@ -140,6 +150,14 @@ daysUntil();
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@700&display=swap');
+
+.flex-item {
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+
+.container-body {}
 
 Icon {
   height: 300px;
@@ -155,6 +173,16 @@ Icon {
 
 h1 {
   text-align: center;
+}
+
+.grid-container-empty {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  /* grid-template-columns: repeat(auto-fill, minmax(15rem,1fr));*/
+  grid-gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+  margin-bottom: 2rem;
 }
 
 .grid-container {

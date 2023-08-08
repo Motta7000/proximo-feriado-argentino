@@ -120,6 +120,7 @@ onMounted(() => {
   // console.log(proxFeriado)
   const launchDateTime = proxFeriado.launchDate
   queSeCelebra.value = proxFeriado.queSeCelebraAux
+  queSeCelebra.value[1] = queSeCelebra.value[1] + "/" + rightNow.getFullYear()
   console.log(queSeCelebra.value)
   //  console.log(launchDateTime)
   if (esHoy.value == false) {
