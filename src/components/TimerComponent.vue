@@ -7,6 +7,7 @@ let horas = ref('');
 let minutos = ref('');
 let segundos = ref('')
 let esHoy = ref(false);
+let DiaDeHoy = ref(new Date())
 import { toIso8601 } from '../functions/functions';
 
 var queSeCelebra = ref('')
@@ -186,7 +187,7 @@ onMounted(() => {
   <ol>
     <li class=" text-white">
       <h1>{{ queSeCelebra[0] }}</h1>
-      <h1>{{ queSeCelebra[1] }}</h1>
+      <h1>{{ queSeCelebra[1] + '/' + DiaDeHoy.getFullYear() }}</h1>
     </li>
   </ol>
 </template>
