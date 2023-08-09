@@ -8,11 +8,21 @@ import { toIso8601 } from "../functions/functions";
 import { watchArray } from "@vueuse/core";
 import { Icon } from '@iconify/vue';
 import { routerViewLocationKey } from "vue-router";
+import { db } from '@/firebase'
+import { collection, getDocs } from "firebase/firestore"
+import { onMounted } from "vue";
 
 let r = ref([]);
 const rAux = ref([]);
-
 const search = ref("");
+
+onMounted(async () => {
+  const querySnapshot = await getDocs(collection(db, "feriados"));
+  querySnapshot.forEach((doc) => {
+    // doc.data() is never undefined for query doc snapshots
+    console.log(doc.id, " => ", doc.data());
+  });
+})
 
 watchArray(search, () => {
   console.log("Hello from watch")
