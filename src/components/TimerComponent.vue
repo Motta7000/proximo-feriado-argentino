@@ -28,7 +28,7 @@ onMounted(() => {
 
     for (var i = start; i < feriados.length; i++) {
       esteMes = feriados[i]
-      console.log(esteMes)
+      // console.log(esteMes)
 
       for (const date in esteMes) {
         /*    console.log(date)
@@ -39,7 +39,7 @@ onMounted(() => {
         if (mapMonth(esteMes['mes']) == rightNow.getMonth() && date == rightNow.getDate()) {
           esHoy.value = true;
           queSeCelebraAux = esteMes[date]
-          console.log(queSeCelebraAux)
+          //console.log(queSeCelebraAux)
           return { launchDate: 0, queSeCelebraAux }
         }
         // Si el mes el cual estamos recorriendo es igual al mes actual y el dia es mas alto que el dia del presente entonces esteMes[date] tiene el proximo feriado mas cercano
@@ -60,7 +60,7 @@ onMounted(() => {
           esHoy.value = false;
           //       console.log(esteMes['mes'] + ' ' + date + ', ' + rightNow.getFullYear() + ' ' + +' ' + 0 + ":" + 0 + ":" + 0)
           launchDate = new Date(esteMes['mes'] + ' ' + date + ', ' + rightNow.getFullYear() + ' ' + +' ' + 0 + ":" + 0 + ":" + 0)
-          console.log(date)
+            / console.log(date)
           //       console.log(launchDate)
           queSeCelebraAux = esteMes[date]
           //        console.log(rightNow)
@@ -123,7 +123,7 @@ onMounted(() => {
   const launchDateTime = proxFeriado.launchDate
   queSeCelebra.value = proxFeriado.queSeCelebraAux
   // queSeCelebra.value[1] = queSeCelebra.value[1] + "/" + rightNow.getFullYear()
-  console.log(queSeCelebra.value)
+  //console.log(queSeCelebra.value)
   //  console.log(launchDateTime)
   if (esHoy.value == false) {
     const updateTimer = () => {
@@ -163,7 +163,7 @@ onMounted(() => {
         clearInterval(intervalId);
       }
     };
-    console.log(queSeCelebra.value)
+    // console.log(queSeCelebra.value)
 
     // Update the timer every second
     updateTimer();
