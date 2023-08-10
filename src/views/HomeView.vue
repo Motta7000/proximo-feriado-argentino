@@ -9,7 +9,7 @@ import { watchArray } from "@vueuse/core";
 import { Icon } from '@iconify/vue';
 import { routerViewLocationKey } from "vue-router";
 import { db } from '@/firebase'
-import { collection, getDocs } from "firebase/firestore"
+import { collection, doc, getDocs } from "firebase/firestore"
 import { onMounted } from "vue";
 
 let r = ref([]);
@@ -18,10 +18,21 @@ const search = ref("");
 
 onMounted(async () => {
   const querySnapshot = await getDocs(collection(db, "feriados"));
+  let feriados = [];
   querySnapshot.forEach((doc) => {
     // doc.data() is never undefined for query doc snapshots
     console.log(doc.id, " => ", doc.data());
+    const feriado = {
+      id: doc.id,
+      alt: doc.data().alt,
+      fecha: doc.data().fecha,
+      img: doc.data().img,
+      queSeCelebra: doc.data().queSeCelebra
+    }
+    feriados.push(feriado)
   });
+  console.log(feriados);
+
 })
 
 watchArray(search, () => {
@@ -145,7 +156,8 @@ daysUntil();
         </div>
         <div v-if="r.length > 0">
           <div class="grid-container px-2">
-            <Card v-for="feriado in r" :feriado="feriado" />
+            <!--   <Card v-for="feriado in r" :feriado="feriado" />-->
+            <Card v-for="feriado in feriados" :feriado="feriado" />
           </div>
         </div>
         <div class="grid-container-empty px-2" v-else>
