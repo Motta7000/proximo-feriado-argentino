@@ -18,7 +18,6 @@ const search = ref("");
 let feriados = ref([]);
 onMounted(() => {
   onSnapshot(collection(db, "feriados"), (querySnapshot) => {
-
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
       console.log(doc.id, " => ", doc.data());
@@ -32,6 +31,7 @@ onMounted(() => {
       }
       feriado.fecha = feriado.fecha.toDate()
       let rightNow = new Date()
+      console.log(feriados)
       feriado.dias = Math.floor((feriado.fecha.getTime() - rightNow.getTime()) / (1000 * 3600 * 24))
       if (feriado.dias > 0) {
         feriados.value.push(feriado)
