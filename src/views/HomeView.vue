@@ -17,22 +17,6 @@ const rAux = ref([]);
 const search = ref("");
 let feriados = ref([]);
 onMounted(() => {
-  /*const querySnapshot = await getDocs(collection(db, "feriados"));
-
-  querySnapshot.forEach((doc) => {
-    // doc.data() is never undefined for query doc snapshots
-    console.log(doc.id, " => ", doc.data());
-    const feriado = {
-      id: doc.id,
-      alt: doc.data().alt,
-      fecha: doc.data().fecha,
-      img: doc.data().img,
-      queSeCelebra: doc.data().queSeCelebra
-    }
-    feriados.push(feriado)
-  });
-  console.log(feriados);
-*/
   onSnapshot(collection(db, "feriados"), (querySnapshot) => {
 
     querySnapshot.forEach((doc) => {
@@ -58,12 +42,14 @@ onMounted(() => {
       return x.fecha - y.fecha
     })
     console.log(feriados);
+    feriados.value.shift()
+    rAux.value = feriados.value
   })
 })
 
 watchArray(search, () => {
   // console.log("Hello from watch")
-  r.value = rAux.value.filter(f => f.queSeCelebra.toLowerCase().includes(search.value.toLowerCase()))
+  feriados.value = rAux.value.filter(f => f.queSeCelebra.toLowerCase().includes(search.value.toLowerCase()))
 
 })
 
@@ -147,7 +133,7 @@ function daysUntil() {
   }
   r.value.shift()
 
-  rAux.value = r.value;
+  // rAux.value = r.value;
 }
 daysUntil();
 </script>
@@ -180,7 +166,7 @@ daysUntil();
           <input v-model.trim="search" type="search" id="search" class="form-control" placeholder="Nombre del feriado">
           <Icon icon="material-symbols:search" width="40" height="40"></Icon>
         </div>
-        <div v-if="r.length > 0">
+        <div v-if="feriados.length > 0">
           <div class="grid-container px-2">
             <!--   <Card v-for="feriado in r" :feriado="feriado" />-->
             <Card v-for="feriado in feriados" :feriado="feriado" />
@@ -189,10 +175,13 @@ daysUntil();
         </div>
         <div class="grid-container-empty px-2" v-else>
           <div> </div>
-          <div class="flex-item">
-            <p><i>No se Encontraron Feriados...</i></p>
+          <div class="flex-item pt-3">
+            <p class="mb-1"><i>No se Encontraron Feriados...</i></p>
+            <Icon height="30" width="30" icon="subway:missing" />
           </div>
-          <div></div>
+          <div>
+
+          </div>
         </div>
 
       </div>
@@ -205,9 +194,11 @@ daysUntil();
 
 .flex-item {
   display: flex;
+  flex-direction: column;
   text-align: center;
   align-items: center;
 }
+
 
 .container-body {}
 
