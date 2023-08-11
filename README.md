@@ -1,6 +1,7 @@
-# proximo-feriado-argentino
+# Proximo Feriado Argentino
 
-This template should help get you started developing with Vue 3 in Vite.
+This is a website developed by Agustín Motta that shows information about what the
+upcoming holidays at Argentina are. This was developed using Vuejs 3 and Bootstrap.
 
 ## Recommended IDE Setup
 
