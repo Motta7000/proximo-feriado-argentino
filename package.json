@@ -12,6 +12,7 @@
   "dependencies": {
     "@vueuse/core": "^10.1.2",
     "bootstrap-vue": "^2.23.1",
+    "firebase": "^10.1.0",
     "popper": "^1.0.1",
     "vue": "^3.3.4",
     "vue-router": "^4.2.0"

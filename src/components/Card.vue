@@ -13,8 +13,9 @@ console.log(feriado)
         <div class="card-text">
             <p>{{ feriado.queSeCelebra }}</p>
             <div class="days-left">
-                <p>{{ feriado.date }}</p>
-                <p>Faltan <b>{{ feriado.days }} </b> días</p>
+                <p>{{ feriado.fecha.getDate() + '/' + (feriado.fecha.getMonth() + 1) + '/' + (feriado.fecha.getFullYear())
+                }}</p>
+                <p>Faltan <b>{{ feriado.dias }} </b> días</p>
             </div>
 
         </div>
