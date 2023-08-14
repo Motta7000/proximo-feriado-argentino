@@ -49,7 +49,7 @@ onMounted(() => {
 
 watchArray(search, () => {
   // console.log("Hello from watch")
-  feriados.value = rAux.value.filter(f => f.queSeCelebra.toLowerCase().includes(search.value.toLowerCase()))
+  feriados.value = rAux.value.filter(f => f.queSeCelebra.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").includes(search.value.toLowerCase())) //f de feriado
 
 })
 
