@@ -16,6 +16,7 @@ let r = ref([]);
 const rAux = ref([]);
 const search = ref("");
 let feriados = ref([]);
+
 onMounted(() => {
   onSnapshot(collection(db, "feriados"), (querySnapshot) => {
     querySnapshot.forEach((doc) => {
@@ -36,13 +37,13 @@ onMounted(() => {
       if (feriado.dias > 0) {
         feriados.value.push(feriado)
       }
-
     });
     feriados.value.sort(function (x, y) {
       return x.fecha - y.fecha
     })
     console.log(feriados);
     feriados.value.shift()
+
     rAux.value = feriados.value
   })
 })

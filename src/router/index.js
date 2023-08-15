@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import FeriadoView from "../views/FeriadoView.vue"
 import SitemapComponent from '../components/SitemapComponent.vue'
 
 const router = createRouter({
@@ -19,6 +20,11 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/AboutView.vue'),
       meta: { title: 'Acerca De | Proximo Feriado Argentino', sitemap:true }
+    },
+    {
+      path:"/:id",
+      name:"car",
+      component: FeriadoView
     }
   ]
 })
