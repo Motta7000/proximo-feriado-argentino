@@ -41,9 +41,10 @@ onMounted(() => {
     feriados.value.sort(function (x, y) {
       return x.fecha - y.fecha
     })
-    console.log(feriados);
-    feriados.value.shift()
 
+    feriados.value.shift()
+    console.log(feriados.value);
+    localStorage.feriados = JSON.stringify(feriados.value)
     rAux.value = feriados.value
   })
 })

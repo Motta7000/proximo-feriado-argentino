@@ -3,7 +3,13 @@ import HomeView from '../views/HomeView.vue'
 import FeriadoView from "../views/FeriadoView.vue"
 import SitemapComponent from '../components/SitemapComponent.vue'
 
-const router = createRouter({
+const router = createRouter({   scrollBehavior(to, from, savedPosition) {
+  if (savedPosition) {
+    return savedPosition
+  } else {
+    return { top: 0 }
+  }
+},
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
