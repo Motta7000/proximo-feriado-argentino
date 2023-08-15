@@ -1,6 +1,5 @@
 <script setup>
 import { ref, onMounted } from 'vue';
-import feriadosRaw from '../data/feriados.json'
 let time = ref('');
 let dias = ref('');
 let horas = ref('');
@@ -8,12 +7,9 @@ let minutos = ref('');
 let segundos = ref('')
 let esHoy = ref(false);
 let DiaDeHoy = ref(new Date())
-
-import { toIso8601 } from '../functions/functions';
 import { db } from '@/firebase'
 import { collection, onSnapshot } from "firebase/firestore"
 
-var queSeCelebra = ref('')
 let feriados = ref([]);
 onMounted(() => {
   onSnapshot(collection(db, "feriados"), (querySnapshot) => {

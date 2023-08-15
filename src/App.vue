@@ -141,8 +141,6 @@ ul {
   max-width: 500px;
 }
 
-
-
 .copyright {
   display: flex;
   background-color: #252222;
@@ -171,8 +169,6 @@ ul {
   --accent-color: #3f3f3f;
   --text-primary-color: #ddd;
 }
-
-.container {}
 
 .collapse {
   justify-content: flex-end;

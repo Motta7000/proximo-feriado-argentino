@@ -3,16 +3,12 @@
 import Timer from "../components/TimerComponent.vue";
 import Card from "../components/Card.vue"
 import { ref } from 'vue';
-import feriadosRaw from "../data/feriados.json"
-import { toIso8601 } from "../functions/functions";
 import { watchArray } from "@vueuse/core";
 import { Icon } from '@iconify/vue';
-import { routerViewLocationKey } from "vue-router";
 import { db } from '@/firebase'
-import { QuerySnapshot, collection, doc, onSnapshot } from "firebase/firestore"
+import { collection, onSnapshot } from "firebase/firestore"
 import { onMounted } from "vue";
 
-let r = ref([]);
 const rAux = ref([]);
 const search = ref("");
 let feriados = ref([]);
@@ -53,89 +49,6 @@ watchArray(search, () => {
 
 })
 
-function daysUntil() {
-  var myDate = new Date('2018-01-22T13:00:00Z')
-  // console.log(myDate)
-  //console.log(myDate.getMonth())
-  var rightNow = new Date();
-  let isoDates = toIso8601(rightNow.getMonth() + 1, rightNow.getDate(), rightNow.getHours(), rightNow.getMinutes(), rightNow.getSeconds())
-  // rightNow = new Date((rightNow.getMonth() + 1) + ' ' + rightNow.getDate() + ', ' + rightNow.getFullYear() + ' ' + +' ' + rightNow.getHours() + ":" + rightNow.getMinutes() + ":" + rightNow.getSeconds())
-  //  rightNow = new Date(isoDates.month + '-' + rightNow.getDate() + ', ' + rightNow.getFullYear() + ' ' + +' ' + rightNow.getHours() + ":" + rightNow.getMinutes() + ":" + rightNow.getSeconds())
-  rightNow = new Date(rightNow.getFullYear() + '-' + (isoDates.month) + '-' + isoDates.day + 'T' + isoDates.hour + ":" + isoDates.minute + ":" + isoDates.second + "Z")
-  //  rightNow = new Date('2023-07-27T20:09:15Z')
-  // console.log("RightNow:")
-  // console.log(rightNow)
-  var feriados = feriadosRaw[rightNow.getFullYear()]
-  // console.log(feriados);
-  var esteMes = feriados[rightNow.getMonth()]
-  //console.log(esteMes)
-  var count = 0;
-  var i = rightNow.getMonth();
-  var launchDate = null;
-  var DifferenceInDays;
-  const cantFeriados = 26
-  r.value.splice(0, r.value.length)
-
-  while (count < cantFeriados && i <= 10) {
-    esteMes = feriados[i]
-    //console.log(esteMes)
-    for (const date in esteMes) {
-      if (date != 'mes' && count < cantFeriados) {
-        launchDate = new Date(esteMes['mes'] + ' ' + date + ', ' + rightNow.getFullYear() + ' ' + +' ' + 0 + ":" + 0 + ":" + 0)
-        //  console.log("Launch" + launchDate.getTime())
-        //  console.log(esteMes['mes'] + ' ' + date + ', ' + rightNow.getFullYear() + ' ' + +' ' + 0 + ":" + 0 + ":" + 0)
-        DifferenceInDays = Math.floor((launchDate.getTime() - rightNow.getTime()) / (1000 * 3600 * 24))
-        // console.log("Difference: " + DifferenceInDays)
-        if (DifferenceInDays > 0) {
-          r.value.push({ 'days': DifferenceInDays, 'queSeCelebra': esteMes[date][0], 'date': esteMes[date][1] + "/" + rightNow.getFullYear(), 'img': esteMes[date][2], 'alt': esteMes[date][3] })
-          count++;
-        }
-
-        //    console.log("i: " + i)
-        //   console.log("count: " + count)
-
-      }
-    }
-    i++; // 0 <= i <= 10
-    // console.log("i: " + i)
-
-  }
-
-  //console.log("count: " + count)
-  if (i > 10) { // si la i>10 entonces nos fuimos al año que viene
-    i = 0;
-    feriados = feriadosRaw[rightNow.getFullYear() + 1]
-    // console.log(feriados)
-    while (i <= 10 && count < cantFeriados) {
-      esteMes = feriados[i]
-      //  console.log(esteMes)
-      for (const date in esteMes) {
-        if (date != 'mes' && count < cantFeriados) {
-          launchDate = new Date(esteMes['mes'] + ' ' + date + ', ' + rightNow.getFullYear() + ' ' + +' ' + 0 + ":" + 0 + ":" + 0)
-          //    console.log(esteMes['mes'] + ' ' + date + ', ' + rightNow.getFullYear() + ' ' + +' ' + 0 + ":" + 0 + ":" + 0)
-          launchDate.setFullYear(launchDate.getFullYear() + 1);
-          //   console.log("Launch" + launchDate.getTime())
-          //  console.log(esteMes['mes'] + ' ' + date + ', ' + (rightNow.getFullYear()) + ' ' + +' ' + 0 + ":" + 0 + ":" + 0)
-          //  console.log("now: " + rightNow.getTime())
-          DifferenceInDays = Math.floor((launchDate.getTime() - rightNow.getTime()) / (1000 * 3600 * 24))
-          //   console.log("Difference: " + DifferenceInDays)
-          if (DifferenceInDays > 0) {
-            r.value.push({ 'days': DifferenceInDays, 'queSeCelebra': esteMes[date][0], 'date': esteMes[date][1] + "/" + (rightNow.getFullYear() + 1), 'img': esteMes[date][2], 'alt': esteMes[date][3], 'googleCalendar': esteMes[date][4] })
-            count++;
-          }
-          //  console.log("i: " + i)
-          //  console.log("count: " + count)
-          //   console.log(r)
-        }
-      }
-      i++; // 0 <= i <= 10
-    }
-  }
-  r.value.shift()
-
-  // rAux.value = r.value;
-}
-daysUntil();
 </script>
 
 <template>
@@ -170,7 +83,6 @@ daysUntil();
           <div class="grid-container px-2">
             <!--   <Card v-for="feriado in r" :feriado="feriado" />-->
             <Card v-for="feriado in feriados" :feriado="feriado" />
-
           </div>
         </div>
         <div class="grid-container-empty px-2" v-else>
@@ -198,9 +110,6 @@ daysUntil();
   text-align: center;
   align-items: center;
 }
-
-
-.container-body {}
 
 Icon {
   height: 300px;

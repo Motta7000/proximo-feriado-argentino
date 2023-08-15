@@ -1,10 +1,7 @@
 <script setup>
 import { defineProps } from "vue"
-
 const { feriado } = defineProps(['feriado'])
 console.log(feriado)
-
-
 </script>
 
 <template>
