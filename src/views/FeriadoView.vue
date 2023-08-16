@@ -1,0 +1,82 @@
+<script setup>
+import { useRoute } from "vue-router";
+import { ref, toRaw } from "vue";
+import { Icon } from "@iconify/vue";
+//import { feriados } from "Card.vue"
+const route = useRoute();
+console.log(route.params);
+let feriados = ref([]);
+let fecha = ref()
+feriados.value = JSON.parse(localStorage.feriados);
+let aux = toRaw(feriados.value)
+let feriado = aux.find((feriado) => feriado.id === route.params.id)
+console.log(feriado)
+fecha.value = feriado.fecha.split('T')[0].split('-')
+
+</script>
+
+<template>
+    <title>Feriado</title>
+    <div class="back-container mt-4 mx-5">
+        <a @click="$router.go(-1)">Atras</a>
+        <Icon class="ml-2" icon="pajamas:go-back" />
+    </div>
+    <div class="grid-container py-5">
+        <article>
+            <div class="article-container">
+                <h1>{{ feriado.queSeCelebra }}</h1>
+                <p>{{ fecha[2] + '/' + fecha[1] + '/' + fecha[0] }}</p>
+                <p>Días Restantes <b>{{ feriado.dias }}</b></p>
+                <p>{{ feriado.descripcion }}</p>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi aperiam reprehenderit in quas
+                    accusantium eligendi. Deserunt ipsum fuga ex, veniam, in explicabo saepe repellendus sed quas illum
+                    cum
+                    maxime repudiandae.</p>
+                <img :alt="feriado.alt" :src="feriado.img">
+                <div>
+                </div>
+            </div>
+        </article>
+        <aside>
+            <div class="aside-container">
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus eius aut delectus officia nam,
+                    distinctio
+                    sequi esse unde quasi debitis itaque facilis dolores rerum accusamus excepturi deleniti dolore et
+                    alias.
+                </p>
+            </div>
+        </aside>
+    </div>
+</template>
+
+<style scoped>
+.back-container {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    padding-left: 5rem;
+    padding-right: 5rem;
+}
+
+.aside-container {
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+}
+
+.article-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    max-width: 700px;
+}
+</style>
