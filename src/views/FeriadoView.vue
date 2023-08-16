@@ -10,7 +10,7 @@ let fecha = ref()
 feriados.value = JSON.parse(localStorage.feriados);
 let aux = toRaw(feriados.value)
 let feriado = aux.find((feriado) => feriado.id === route.params.id)
-console.log(feriado)
+console.log(feriado.descripcion)
 fecha.value = feriado.fecha.split('T')[0].split('-')
 
 </script>
@@ -18,20 +18,26 @@ fecha.value = feriado.fecha.split('T')[0].split('-')
 <template>
     <title>Feriado</title>
     <div class="back-container mt-4 mx-5">
-        <a @click="$router.go(-1)">Atras</a>
-        <Icon class="ml-2" icon="pajamas:go-back" />
+        <!--   <RouterLink class="link" :to="`/`" href="">
+            Atras
+        </RouterLink>
+
+  <a @click="$router.go(-1)">back</a>
+        <Icon class="ml-2" icon="pajamas:go-back" />-->
     </div>
-    <div class="grid-container py-5">
+    <div class="grid-container my-5">
         <article>
             <div class="article-container">
                 <h1>{{ feriado.queSeCelebra }}</h1>
                 <p>{{ fecha[2] + '/' + fecha[1] + '/' + fecha[0] }}</p>
-                <p>Días Restantes <b>{{ feriado.dias }}</b></p>
+                <p>Días Restantes: <b>{{ feriado.dias }}</b></p>
+                <div class="tipo-feriado-container mb-2">
+                    <p class="m-0">Tipo de Feriado: {{ feriado.tipo }}</p>
+                    <div v-if="feriado.tipo == 'trasladable'" class="icono green"></div>
+                    <div v-if="feriado.tipo == 'inamovible'" class="icono blue"></div>
+                    <div v-if="feriado.tipo == 'turistico'" class="icono purple"></div>
+                </div>
                 <p>{{ feriado.descripcion }}</p>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi aperiam reprehenderit in quas
-                    accusantium eligendi. Deserunt ipsum fuga ex, veniam, in explicabo saepe repellendus sed quas illum
-                    cum
-                    maxime repudiandae.</p>
                 <img :alt="feriado.alt" :src="feriado.img">
                 <div>
                 </div>
@@ -50,6 +56,46 @@ fecha.value = feriado.fecha.split('T')[0].split('-')
 </template>
 
 <style scoped>
+img {
+    width: 100%;
+    max-width: 500px;
+}
+
+.tipo-feriado-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.icono {
+    height: 20px;
+    width: 20px;
+
+    border-radius: 10px;
+}
+
+.green {
+    background-color: #2e7d33;
+}
+
+.blue {
+    background-color: #0072bb;
+}
+
+.purple {
+    background-color: #6a1b99;
+}
+
+aside {
+    border-left: #c0aba4 solid 1px;
+}
+
+.link {
+    text-decoration: none;
+    color: inherit;
+}
+
 .back-container {
     display: flex;
     gap: 0.5rem;
@@ -58,7 +104,7 @@ fecha.value = feriado.fecha.split('T')[0].split('-')
 
 .grid-container {
     display: grid;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: 4fr 1fr;
     padding-left: 5rem;
     padding-right: 5rem;
 }

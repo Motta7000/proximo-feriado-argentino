@@ -28,10 +28,13 @@ onMounted(() => {
         fecha: doc.data().fecha,
         img: doc.data().img,
         queSeCelebra: doc.data().queSeCelebra,
-        dias: null
+        dias: null,
+        descripcion: doc.data().descripcion,
+        tipo: doc.data().tipo
       }
       feriado.fecha = feriado.fecha.toDate()
       let rightNow = new Date()
+      console.log(feriado)
       console.log(feriados)
       feriado.dias = Math.floor((feriado.fecha.getTime() - rightNow.getTime()) / (1000 * 3600 * 24))
       if (feriado.dias > 0) {

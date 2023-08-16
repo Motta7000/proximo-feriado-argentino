@@ -4,25 +4,26 @@ import { RouterLink } from "vue-router"
 const { feriado } = defineProps(['feriado'])
 console.log(feriado)
 
-
 </script>
 
 <template>
-    <div class="card">
-        <RouterLink class="link" :to="`${feriado.id}`" href="">
+    <RouterLink class="link" :to="`${feriado.id}`" href="">
+        <div class="card">
+
             <img :src="feriado.img" @error="$event.target.src = 'https://i.ibb.co/HTx2DB8/icono-c.jpg'"
                 :alt="feriado.alt" />
-        </RouterLink>
-        <div class="card-text">
-            <p>{{ feriado.queSeCelebra }}</p>
-            <div class="days-left">
-                <p>{{ feriado.fecha.getDate() + '/' + (feriado.fecha.getMonth() + 1) + '/' +
-                    (feriado.fecha.getFullYear())
-                }}</p>
-                <p>Faltan <b>{{ feriado.dias }} </b> días</p>
+
+            <div class="card-text">
+                <p>{{ feriado.queSeCelebra }}</p>
+                <div class="days-left">
+                    <p>{{ feriado.fecha.getDate() + '/' + (feriado.fecha.getMonth() + 1) + '/' +
+                        (feriado.fecha.getFullYear())
+                    }}</p>
+                    <p>Faltan <b>{{ feriado.dias }} </b> días</p>
+                </div>
             </div>
         </div>
-    </div>
+    </RouterLink>
 </template>
 
 <style scoped>
@@ -52,6 +53,7 @@ img {
 .card {
     min-width: 160px;
     max-width: 220px;
+    height: 100%;
 }
 
 p {

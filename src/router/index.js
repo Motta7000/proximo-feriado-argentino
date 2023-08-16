@@ -1,15 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import FeriadoView from "../views/FeriadoView.vue"
-import SitemapComponent from '../components/SitemapComponent.vue'
 
-const router = createRouter({   scrollBehavior(to, from, savedPosition) {
-  if (savedPosition) {
-    return savedPosition
-  } else {
-    return { top: 0 }
-  }
-},
+
+const router = createRouter({ 
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
@@ -32,7 +26,21 @@ const router = createRouter({   scrollBehavior(to, from, savedPosition) {
       name:"car",
       component: FeriadoView
     }
-  ]
+  ],
+  scrollBehavior (to, from, savedPosition){
+    return new Promise ((resolve, reject) => {
+      setTimeout(() => {
+        if (savedPosition){
+          console.log(savedPosition)
+          return resolve({left:savedPosition.left,top:savedPosition.top,behavior: 'instant'})
+        }
+        else
+        {
+          return false;
+        }
+      },1)
+    })
+  }
 })
 
 export default router
