@@ -1,8 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import SitemapComponent from '../components/SitemapComponent.vue'
+import FeriadoView from "../views/FeriadoView.vue"
 
-const router = createRouter({
+
+const router = createRouter({ 
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
@@ -19,8 +20,27 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/AboutView.vue'),
       meta: { title: 'Acerca De | Proximo Feriado Argentino', sitemap:true }
+    },
+    {
+      path:"/:id",
+      name:"car",
+      component: FeriadoView
     }
-  ]
+  ],
+  scrollBehavior (to, from, savedPosition){
+    return new Promise ((resolve, reject) => {
+      setTimeout(() => {
+        if (savedPosition){
+          console.log(savedPosition)
+          return resolve({left:savedPosition.left,top:savedPosition.top,behavior: 'instant'})
+        }
+        else
+        {
+          return resolve({top:0,behavior:'instant'});
+        }
+      },1)
+    })
+  }
 })
 
 export default router

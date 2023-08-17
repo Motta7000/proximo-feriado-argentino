@@ -12,6 +12,7 @@ import { onMounted } from "vue";
 const rAux = ref([]);
 const search = ref("");
 let feriados = ref([]);
+
 onMounted(() => {
   onSnapshot(collection(db, "feriados"), (querySnapshot) => {
     querySnapshot.forEach((doc) => {
@@ -23,22 +24,27 @@ onMounted(() => {
         fecha: doc.data().fecha,
         img: doc.data().img,
         queSeCelebra: doc.data().queSeCelebra,
-        dias: null
+        dias: null,
+        descripcion: doc.data().descripcion,
+        tipo: doc.data().tipo
       }
       feriado.fecha = feriado.fecha.toDate()
       let rightNow = new Date()
-      console.log(feriados)
+      console.log(feriado)
+
       feriado.dias = Math.floor((feriado.fecha.getTime() - rightNow.getTime()) / (1000 * 3600 * 24))
       if (feriado.dias > 0) {
         feriados.value.push(feriado)
       }
-
+      console.log(feriados)
     });
     feriados.value.sort(function (x, y) {
       return x.fecha - y.fecha
     })
-    console.log(feriados);
+
     feriados.value.shift()
+    console.log(feriados.value);
+    localStorage.feriados = JSON.stringify(feriados.value)
     rAux.value = feriados.value
   })
 })
