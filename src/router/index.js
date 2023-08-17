@@ -36,7 +36,7 @@ const router = createRouter({
         }
         else
         {
-          return false;
+          return resolve({top:0,behavior:'instant'});
         }
       },1)
     })

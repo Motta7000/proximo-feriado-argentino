@@ -10,7 +10,7 @@ let fecha = ref()
 feriados.value = JSON.parse(localStorage.feriados);
 let aux = toRaw(feriados.value)
 let feriado = aux.find((feriado) => feriado.id === route.params.id)
-console.log(feriado.descripcion)
+console.log(feriado)
 fecha.value = feriado.fecha.split('T')[0].split('-')
 
 </script>
@@ -37,12 +37,14 @@ fecha.value = feriado.fecha.split('T')[0].split('-')
                     <div v-if="feriado.tipo == 'inamovible'" class="icono blue"></div>
                     <div v-if="feriado.tipo == 'turistico'" class="icono purple"></div>
                 </div>
-                <p>{{ feriado.descripcion }}</p>
+
+                <p v-for="d in feriado.descripcion">{{ d }}</p>
                 <img :alt="feriado.alt" :src="feriado.img">
                 <div>
                 </div>
             </div>
         </article>
+        <!--
         <aside>
             <div class="aside-container">
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus eius aut delectus officia nam,
@@ -52,6 +54,7 @@ fecha.value = feriado.fecha.split('T')[0].split('-')
                 </p>
             </div>
         </aside>
+        -->
     </div>
 </template>
 
@@ -103,7 +106,7 @@ aside {
 }
 
 .grid-container {
-    display: grid;
+    display: block;
     grid-template-columns: 4fr 1fr;
     padding-left: 5rem;
     padding-right: 5rem;
