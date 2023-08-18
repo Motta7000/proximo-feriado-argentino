@@ -33,9 +33,9 @@ fecha.value = feriado.fecha.split('T')[0].split('-')
                 <p>Días Restantes: <b>{{ feriado.dias }}</b></p>
                 <div class="tipo-feriado-container mb-2">
                     <p class="m-0">Tipo de Feriado: {{ feriado.tipo }}</p>
-                    <div v-if="feriado.tipo == 'trasladable'" class="icono green"></div>
-                    <div v-if="feriado.tipo == 'inamovible'" class="icono blue"></div>
-                    <div v-if="feriado.tipo == 'turistico'" class="icono purple"></div>
+                    <div v-if="feriado.tipo == 'Trasladable'" class="icono green"></div>
+                    <div v-if="feriado.tipo == 'Inamovible'" class="icono blue"></div>
+                    <div v-if="feriado.tipo == 'Turistico'" class="icono purple"></div>
                 </div>
 
                 <p v-for="d in feriado.descripcion">{{ d }}</p>
@@ -108,8 +108,9 @@ aside {
 .grid-container {
     display: block;
     grid-template-columns: 4fr 1fr;
-    padding-left: 5rem;
-    padding-right: 5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
 }
 
 article {}

@@ -10,16 +10,16 @@ import { Icon } from '@iconify/vue';
 
     <div class="nav-container navbarnew">
       <nav style="justify-content: space-evenly;" class="navmain navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container">
-          <RouterLink class="nav-link navbar-brand titlenew" to="/">Proximo Feriado Argentino (Beta)</RouterLink>
+        <div class="container pl-2 container-new">
+          <RouterLink class="nav-link navbar-brand titlenew" to="/">Proximo Feriado Argentino</RouterLink>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse justify-content-left" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <RouterLink class="nav-link" to="/">Inicio</RouterLink>
-              <RouterLink class="nav-link" to="/about">Acerca de</RouterLink>
+              <RouterLink class="nav-link link-new" to="/">Inicio</RouterLink>
+              <RouterLink class="nav-link link-new" to="/about">Acerca de</RouterLink>
             </div>
           </div>
         </div>
@@ -76,8 +76,22 @@ import { Icon } from '@iconify/vue';
 </template>
 
 <style scoped>
+.link-new {
+  text-align: start;
+}
+
+.container-new {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  width: 100%;
+  padding-right: calc(var(--bs-gutter-x) * .5);
+  padding-left: calc(var(--bs-gutter-x) * .5);
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .titlenew {
-  padding-left: 15px;
+
   text-wrap: wrap;
 }
 
@@ -133,6 +147,12 @@ ul {
   .footer-container {
     display: block;
     padding: 0;
+  }
+}
+
+@media screen and (max-width:281px) {
+  .titlenew {
+    font-size: 0.96rem;
   }
 }
 

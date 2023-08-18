@@ -85,9 +85,10 @@ watchArray(search, () => {
     <div class=" body d-flex align-items-center ">
       <div class="py-2 container-body">
         <h1 class="pb-2">Próximos feriados</h1>
-        <div class="search-container pb-3 px-3">
-          <input v-model.trim="search" type="search" id="search" class="form-control" placeholder="Nombre del feriado">
-          <Icon icon="material-symbols:search" width="40" height="40"></Icon>
+        <div class="search-container pb-3 px-2">
+          <input v-model.trim="search" type="search" id="search" class="input form-control"
+            placeholder="Nombre del feriado">
+          <Icon class="icon-search" icon="material-symbols:search" width="40" height="40"></Icon>
         </div>
         <div v-if="feriados.length > 0">
           <div class="grid-container px-2">
@@ -113,6 +114,18 @@ watchArray(search, () => {
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@700&display=swap');
+
+.input {
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-right: none;
+}
+
+.icon-search {
+  border: 1px solid #ced4da;
+  border-top-right-radius: 0.375rem;
+  border-bottom-right-radius: 0.375rem;
+}
 
 .flex-item {
   display: flex;

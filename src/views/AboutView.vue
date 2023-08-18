@@ -4,7 +4,7 @@
     <div class="container-hero">
       <div class="row rowagus">
         <div class="col-lg-7 mx-auto text-center">
-          <h1 class="display-6">Este sitio web fue desarrollado usando Bootstrap, VueJs y un JSON creado por mí</h1>
+          <h1 class="display-6">Este sitio web fue desarrollado usando Bootstrap, VueJs y Firebase</h1>
         </div>
       </div>
     </div>

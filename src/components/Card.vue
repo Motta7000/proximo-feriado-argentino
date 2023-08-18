@@ -9,10 +9,10 @@ console.log(feriado)
 <template>
     <RouterLink class="link" :to="`${feriado.id}`" href="">
         <div class="card">
-
-            <img :src="feriado.img" @error="$event.target.src = 'https://i.ibb.co/HTx2DB8/icono-c.jpg'"
-                :alt="feriado.alt" />
-
+            <div class="img-container">
+                <img :src="feriado.img" @error="$event.target.src = 'https://i.ibb.co/HTx2DB8/icono-c.jpg'"
+                    :alt="feriado.alt" />
+            </div>
             <div class="card-text">
                 <p>{{ feriado.queSeCelebra }}</p>
                 <div class="days-left">
@@ -30,6 +30,7 @@ console.log(feriado)
 .link {
     text-decoration: none;
     color: inherit;
+
 }
 
 .days-left {
@@ -44,6 +45,7 @@ img {
     transition: all 0.5s ease;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+    object-fit: cover;
 
 }
 
@@ -67,6 +69,7 @@ img {
     color: white;
     transform: scale(1.03);
     transition: all 0.5s ease;
+
     border-bottom: none;
 }
 
