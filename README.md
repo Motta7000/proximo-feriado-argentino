@@ -1,7 +1,10 @@
 # Proximo Feriado Argentino
 
 This is a website developed by Agustín Motta that shows information about what the
-upcoming holidays at Argentina are. This was developed using Vuejs 3 and Bootstrap.
+upcoming holidays at Argentina are. This was developed by mainly using Vuejs 3, Firebase and bootstrap.
+You can access this website by visiting: https://proximoferiadoargentino.com.ar/
+
+This project is currently a Work in progress!
 
 ## Recommended IDE Setup
 
