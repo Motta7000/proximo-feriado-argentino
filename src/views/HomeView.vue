@@ -33,7 +33,7 @@ onMounted(() => {
       console.log(feriado)
 
       feriado.dias = Math.floor((feriado.fecha.getTime() - rightNow.getTime()) / (1000 * 3600 * 24))
-      if (feriado.dias > 0) {
+      if (feriado.dias >= -1) {
         feriados.value.push(feriado)
       }
       console.log(feriados)
@@ -41,8 +41,12 @@ onMounted(() => {
     feriados.value.sort(function (x, y) {
       return x.fecha - y.fecha
     })
-
-    feriados.value.shift()
+    if (feriados.value[0].dias >= -1 && feriados.value[0].dias < 0) {
+      feriados.value.shift() //Ya se que el else y el if hacen lo mismo pero estoy muy dormido como para seguir ahora con esto
+    }
+    else {
+      feriados.value.shift()
+    }
     console.log(feriados.value);
     localStorage.feriados = JSON.stringify(feriados.value)
     rAux.value = feriados.value
