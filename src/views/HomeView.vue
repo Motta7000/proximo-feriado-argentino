@@ -41,14 +41,15 @@ onMounted(() => {
     feriados.value.sort(function (x, y) {
       return x.fecha - y.fecha
     })
+    console.log(feriados.value);
+    localStorage.feriados = JSON.stringify(feriados.value)
     if (feriados.value[0].dias >= -1 && feriados.value[0].dias < 0) {
       feriados.value.shift() //Ya se que el else y el if hacen lo mismo pero estoy muy dormido como para seguir ahora con esto
     }
     else {
       feriados.value.shift()
     }
-    console.log(feriados.value);
-    localStorage.feriados = JSON.stringify(feriados.value)
+
     rAux.value = feriados.value
   })
 })
@@ -76,7 +77,7 @@ watchArray(search, () => {
     <div class="hero vh d-flex align-items-center">
       <div class="container-hero">
         <div class="row">
-          <div class="col-lg-7 mx-auto text-center">
+          <div class="col-lg-7 mx-auto text-center timer-container">
             <Timer />
           </div>
         </div>
@@ -114,6 +115,11 @@ watchArray(search, () => {
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@700&display=swap');
+
+.timer-container {
+  max-width: 100vw;
+  padding: 0;
+}
 
 .input {
   border-top-right-radius: 0px;

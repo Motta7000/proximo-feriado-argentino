@@ -9,6 +9,7 @@ let feriados = ref([]);
 let fecha = ref()
 feriados.value = JSON.parse(localStorage.feriados);
 let aux = toRaw(feriados.value)
+console.log(aux)
 let feriado = aux.find((feriado) => feriado.id === route.params.id)
 console.log(feriado)
 fecha.value = feriado.fecha.split('T')[0].split('-')
@@ -28,16 +29,16 @@ fecha.value = feriado.fecha.split('T')[0].split('-')
     <div class="grid-container my-5">
         <article>
             <div class="article-container">
-                <h1>{{ feriado.queSeCelebra }}</h1>
+                <h1 class="que-se-celebra-text">{{ feriado.queSeCelebra }}</h1>
                 <p>{{ fecha[2] + '/' + fecha[1] + '/' + fecha[0] }}</p>
-                <p>Días Restantes: <b>{{ feriado.dias }}</b></p>
+
+                <p v-if="feriado.dias > 0">Días Restantes: <b>{{ feriado.dias }}</b></p>
                 <div class="tipo-feriado-container mb-2">
                     <p class="m-0">Tipo de Feriado: {{ feriado.tipo }}</p>
                     <div v-if="feriado.tipo == 'Trasladable'" class="icono green"></div>
                     <div v-if="feriado.tipo == 'Inamovible'" class="icono blue"></div>
                     <div v-if="feriado.tipo == 'Turistico'" class="icono purple"></div>
                 </div>
-
                 <p v-for="d in feriado.descripcion">{{ d }}</p>
                 <img :alt="feriado.alt" :src="feriado.img">
                 <div>
@@ -59,6 +60,10 @@ fecha.value = feriado.fecha.split('T')[0].split('-')
 </template>
 
 <style scoped>
+.que-se-celebra-text {
+    text-align: center;
+}
+
 img {
     width: 100%;
     max-width: 500px;

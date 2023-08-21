@@ -9,6 +9,7 @@ let esHoy = ref(false);
 let DiaDeHoy = ref(new Date())
 import { db } from '@/firebase'
 import { collection, onSnapshot } from "firebase/firestore"
+import { RouterLink } from 'vue-router'
 
 let feriados = ref([]);
 onMounted(() => {
@@ -104,7 +105,7 @@ onMounted(() => {
 
 <template>
   <h1 v-if="!esHoy" class="display-4 text-white">¿Cuánto falta para el próximo feriado?</h1>
-  <h1 v-else class="display-4 text-white">¡Feliz Feriado!</h1>
+  <h1 v-else class="display-4 text-white feliz">¡Feliz Feriado!</h1>
   <div v-if="!esHoy" title="Días, Horas, Minutos, Segundos" class="timer">
     <h1 class="timer-text display-4 text-white text-nowrap">
       {{ time }}
@@ -113,15 +114,27 @@ onMounted(() => {
   </div>
 
   <ol v-if="feriados.length > 0">
-    <li class=" text-white">
+    <li class="text-white text-container">
       <h1>{{ feriados[0].queSeCelebra }}</h1>
       <h1>{{ feriados[0].fecha.getDate() + '/' + (feriados[0].fecha.getMonth() + 1) + '/' + DiaDeHoy.getFullYear() }}</h1>
-
+      <RouterLink :to="`${feriados[0].id}`">Acerca de</RouterLink>
     </li>
   </ol>
 </template>
 
 <style scoped>
+.text-container {
+  --bs-gutter-x: 0;
+}
+
+.feliz {
+  text-wrap: nowrap;
+}
+
+ol {
+  padding-left: 0;
+}
+
 .helpText {
   position: static;
   margin-left: 70px;

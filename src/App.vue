@@ -76,6 +76,10 @@ import { Icon } from '@iconify/vue';
 </template>
 
 <style scoped>
+footer {
+  margin-top: auto;
+}
+
 .link-new {
   text-align: start;
 }
@@ -194,7 +198,5 @@ ul {
   justify-content: flex-end;
 }
 
-.navbar-toggler {
-  margin: auto;
-}
+.navbar-toggler {}
 </style>
