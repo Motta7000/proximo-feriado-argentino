@@ -11,6 +11,8 @@ import { onMounted } from "vue";
 
 const rAux = ref([]);
 const search = ref("");
+const filtrarInamovibles = ref();
+const filtrarTransladables = ref()
 let feriados = ref([]);
 
 onMounted(() => {
@@ -54,10 +56,36 @@ onMounted(() => {
   })
 })
 
-watchArray(search, () => {
-  // console.log("Hello from watch")
+watchArray([search, filtrarInamovibles], () => {
+  console.log("Hello from watch")
   feriados.value = rAux.value.filter(f => f.queSeCelebra.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").includes(search.value.toLowerCase())) //f de feriado
+  let filtro = [];
+  let feriadosFinal = [];
+  if (filtrarInamovibles.value === true) {
+    filtro.push('Inamovible')
+  }
+  if (filtrarTransladables.value === true) {
+    filtro.push('Trasladable')
+  }
+  console.log(rAux.value)
+  for (let i = 0; i < rAux.value.length; i++) {
+    console.log(rAux.value[i])
+    for (let j = 0; j < filtro.length; j++) {
 
+      if (rAux.value[i] == filtro[j]) {
+        feriadosFinal.push(rAux.value[i])
+        break;
+      }
+    }
+  }
+  console.log(feriadosFinal)
+  /*
+    if (filtrarInamovibles.value == true) {
+      feriados.value = feriados.value.filter(f => f.tipo === "Inamovible")
+  
+    }
+    filtrarTransladables
+  */
 })
 
 </script>
@@ -91,6 +119,12 @@ watchArray(search, () => {
             placeholder="Nombre del feriado">
           <Icon class="icon-search" icon="material-symbols:search" width="40" height="40"></Icon>
         </div>
+
+        <input type="checkbox" id="inamovibles" v-model="filtrarInamovibles">
+        <label for="inamovibles">Inamovible</label>
+        <input type="checkbox" id="trasladable" v-model="filtrarTransladables">
+        <label for="trasladable">Trasladable</label>
+
         <div v-if="feriados.length > 0">
           <div class="grid-container px-2">
             <!--   <Card v-for="feriado in r" :feriado="feriado" />-->
