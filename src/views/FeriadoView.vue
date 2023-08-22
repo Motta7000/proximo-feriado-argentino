@@ -39,7 +39,7 @@ fecha.value = feriado.fecha.split('T')[0].split('-')
                     <div v-if="feriado.tipo == 'Inamovible'" class="icono blue"></div>
                     <div v-if="feriado.tipo == 'Turistico'" class="icono purple"></div>
                 </div>
-                <p v-for="d in feriado.descripcion">{{ d }}</p>
+                <p class="descripcion" v-for="d in feriado.descripcion">{{ d }}</p>
                 <img :alt="feriado.alt" :src="feriado.img">
                 <div>
                 </div>
@@ -60,6 +60,10 @@ fecha.value = feriado.fecha.split('T')[0].split('-')
 </template>
 
 <style scoped>
+.descripcion {
+    text-align: center;
+}
+
 .que-se-celebra-text {
     text-align: center;
 }
