@@ -12,7 +12,8 @@ import { onMounted } from "vue";
 const rAux = ref([]);
 const search = ref("");
 const filtrarInamovibles = ref();
-const filtrarTransladables = ref()
+const filtrarTransladables = ref();
+const filtrarTuristicos = ref();
 let feriados = ref([]);
 
 onMounted(() => {
@@ -56,29 +57,41 @@ onMounted(() => {
   })
 })
 
-watchArray([search, filtrarInamovibles], () => {
+watchArray([search, filtrarInamovibles, filtrarTransladables, filtrarTuristicos], () => {
   console.log("Hello from watch")
-  feriados.value = rAux.value.filter(f => f.queSeCelebra.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").includes(search.value.toLowerCase())) //f de feriado
+
   let filtro = [];
   let feriadosFinal = [];
   if (filtrarInamovibles.value === true) {
-    filtro.push('Inamovible')
+    filtro.push('Inamovible');
   }
   if (filtrarTransladables.value === true) {
-    filtro.push('Trasladable')
+    filtro.push('Trasladable');
   }
+  if (filtrarTuristicos.value === true) {
+    filtro.push('Turistico');
+  }
+  console.log(filtro)
   console.log(rAux.value)
   for (let i = 0; i < rAux.value.length; i++) {
     console.log(rAux.value[i])
     for (let j = 0; j < filtro.length; j++) {
-
-      if (rAux.value[i] == filtro[j]) {
+      console.log(rAux.value[i].tipo)
+      console.log(rAux.value[i].tipo + " VS " + filtro[j])
+      if (rAux.value[i].tipo == filtro[j]) {
         feriadosFinal.push(rAux.value[i])
         break;
       }
     }
   }
-  console.log(feriadosFinal)
+  console.log(feriadosFinal);
+  feriados.value = rAux.value.filter(f => f.queSeCelebra.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").includes(search.value.toLowerCase())) //f de feriado
+  if (feriadosFinal.length != 0) {
+    feriados.value = feriados.value.filter()
+    for (let i = 0; i < feriados.value.length; i++) {
+      if (feriados.value[i])
+    }
+  }
   /*
     if (filtrarInamovibles.value == true) {
       feriados.value = feriados.value.filter(f => f.tipo === "Inamovible")
@@ -124,6 +137,8 @@ watchArray([search, filtrarInamovibles], () => {
         <label for="inamovibles">Inamovible</label>
         <input type="checkbox" id="trasladable" v-model="filtrarTransladables">
         <label for="trasladable">Trasladable</label>
+        <input type="checkbox" id="turisticos" v-model="filtrarTuristicos">
+        <label for="turisticos">Turistico</label>
 
         <div v-if="feriados.length > 0">
           <div class="grid-container px-2">

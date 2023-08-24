@@ -20,6 +20,12 @@ console.log(feriado)
                         (feriado.fecha.getFullYear())
                     }}</p>
                     <p>Faltan <b>{{ feriado.dias }} </b> días</p>
+                    <div class="tipo-feriado-container mb-2">
+                        <p class="m-0">Tipo de Feriado: {{ feriado.tipo }}</p>
+                        <div v-if="feriado.tipo == 'Trasladable'" class="icono green"></div>
+                        <div v-if="feriado.tipo == 'Inamovible'" class="icono blue"></div>
+                        <div v-if="feriado.tipo == 'Turistico'" class="icono purple"></div>
+                    </div>
                 </div>
             </div>
         </div>
