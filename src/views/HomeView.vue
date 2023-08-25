@@ -71,6 +71,11 @@ watchArray([search, filtrarInamovibles, filtrarTransladables, filtrarTuristicos]
   if (filtrarTuristicos.value === true) {
     filtro.push('Turistico');
   }
+  if (filtrarInamovibles.value === false && filtrarTransladables.value === false && filtrarTuristicos.value === false) {
+    filtro.push('Turistico');
+    filtro.push('Trasladable');
+    filtro.push('Inamovible');
+  }
   console.log(filtro)
   console.log(rAux.value)
   for (let i = 0; i < rAux.value.length; i++) {
@@ -85,13 +90,14 @@ watchArray([search, filtrarInamovibles, filtrarTransladables, filtrarTuristicos]
     }
   }
   console.log(feriadosFinal);
-  feriados.value = rAux.value.filter(f => f.queSeCelebra.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").includes(search.value.toLowerCase())) //f de feriado
-  if (feriadosFinal.length != 0) {
+  feriados.value = feriadosFinal.filter(f => f.queSeCelebra.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").includes(search.value.toLowerCase()))
+  //feriados.value = rAux.value.filter(f => f.queSeCelebra.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").includes(search.value.toLowerCase())) //f de feriado
+  /*if (feriadosFinal.length != 0) {
     feriados.value = feriados.value.filter()
     for (let i = 0; i < feriados.value.length; i++) {
       if (feriados.value[i])
     }
-  }
+  }*/
   /*
     if (filtrarInamovibles.value == true) {
       feriados.value = feriados.value.filter(f => f.tipo === "Inamovible")
@@ -127,18 +133,19 @@ watchArray([search, filtrarInamovibles, filtrarTransladables, filtrarTuristicos]
     <div class=" body d-flex align-items-center ">
       <div class="py-2 container-body">
         <h1 class="pb-2">Próximos feriados</h1>
-        <div class="search-container pb-3 px-2">
+        <div class="search-container pb-1 px-2">
           <input v-model.trim="search" type="search" id="search" class="input form-control"
             placeholder="Nombre del feriado">
           <Icon class="icon-search" icon="material-symbols:search" width="40" height="40"></Icon>
         </div>
-
-        <input type="checkbox" id="inamovibles" v-model="filtrarInamovibles">
-        <label for="inamovibles">Inamovible</label>
-        <input type="checkbox" id="trasladable" v-model="filtrarTransladables">
-        <label for="trasladable">Trasladable</label>
-        <input type="checkbox" id="turisticos" v-model="filtrarTuristicos">
-        <label for="turisticos">Turistico</label>
+        <div class="py-1 px-2">
+          <input type="checkbox" id="inamovibles" v-model="filtrarInamovibles">
+          <label for="inamovibles">Inamovible</label>
+          <input type="checkbox" id="trasladable" v-model="filtrarTransladables">
+          <label for="trasladable">Trasladable</label>
+          <input type="checkbox" id="turisticos" v-model="filtrarTuristicos">
+          <label for="turisticos">Turistico</label>
+        </div>
 
         <div v-if="feriados.length > 0">
           <div class="grid-container px-2">
