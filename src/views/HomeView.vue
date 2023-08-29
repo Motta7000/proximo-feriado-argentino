@@ -11,9 +11,9 @@ import { onMounted } from "vue";
 
 const rAux = ref([]);
 const search = ref("");
-const filtrarInamovibles = ref();
-const filtrarTransladables = ref();
-const filtrarTuristicos = ref();
+const filtrarInamovibles = ref(false);
+const filtrarTransladables = ref(false);
+const filtrarTuristicos = ref(false);
 let feriados = ref([]);
 
 onMounted(() => {
@@ -138,13 +138,19 @@ watchArray([search, filtrarInamovibles, filtrarTransladables, filtrarTuristicos]
             placeholder="Nombre del feriado">
           <Icon class="icon-search" icon="material-symbols:search" width="40" height="40"></Icon>
         </div>
-        <div class="py-1 px-2">
-          <input type="checkbox" id="inamovibles" v-model="filtrarInamovibles">
-          <label for="inamovibles">Inamovible</label>
-          <input type="checkbox" id="trasladable" v-model="filtrarTransladables">
-          <label for="trasladable">Trasladable</label>
-          <input type="checkbox" id="turisticos" v-model="filtrarTuristicos">
-          <label for="turisticos">Turistico</label>
+        <div class="py-1 px-2 flex-filters">
+          <div>
+            <input type="checkbox" id="inamovibles" v-model="filtrarInamovibles">
+            <label for="inamovibles">Inamovible</label>
+          </div>
+          <div> <input type="checkbox" id="trasladable" v-model="filtrarTransladables">
+            <label for="trasladable">Trasladable</label>
+          </div>
+          <div>
+            <input type="checkbox" id="turisticos" v-model="filtrarTuristicos">
+            <label for="turisticos">Turistico</label>
+          </div>
+
         </div>
 
         <div v-if="feriados.length > 0">
@@ -159,11 +165,8 @@ watchArray([search, filtrarInamovibles, filtrarTransladables, filtrarTuristicos]
             <p class="mb-1"><i>No se Encontraron Feriados...</i></p>
             <Icon height="30" width="30" icon="subway:missing" />
           </div>
-          <div>
-
-          </div>
+          <div></div>
         </div>
-
       </div>
     </div>
   </main>
@@ -171,6 +174,17 @@ watchArray([search, filtrarInamovibles, filtrarTransladables, filtrarTuristicos]
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@700&display=swap');
+
+label {
+  padding-left: 5px;
+}
+
+.flex-filters {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  text-align: center;
+}
 
 .timer-container {
   max-width: 100vw;
