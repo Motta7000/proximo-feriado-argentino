@@ -139,18 +139,18 @@ watchArray([search, filtrarInamovibles, filtrarTransladables, filtrarTuristicos]
           <Icon class="icon-search" icon="material-symbols:search" width="40" height="40"></Icon>
         </div>
         <div class="py-1 px-2 flex-filters">
-          <div>
+          <div class="filter-item">
             <input type="checkbox" id="inamovibles" v-model="filtrarInamovibles">
             <label for="inamovibles">Inamovible</label>
           </div>
-          <div> <input type="checkbox" id="trasladable" v-model="filtrarTransladables">
+          <div class="filter-item">
+            <input type="checkbox" id="trasladable" v-model="filtrarTransladables">
             <label for="trasladable">Trasladable</label>
           </div>
-          <div>
+          <div class="filter-item">
             <input type="checkbox" id="turisticos" v-model="filtrarTuristicos">
             <label for="turisticos">Turistico</label>
           </div>
-
         </div>
 
         <div v-if="feriados.length > 0">
@@ -166,7 +166,9 @@ watchArray([search, filtrarInamovibles, filtrarTransladables, filtrarTuristicos]
             <Icon height="30" width="30" icon="subway:missing" />
           </div>
           <div></div>
+
         </div>
+
       </div>
     </div>
   </main>
@@ -174,6 +176,28 @@ watchArray([search, filtrarInamovibles, filtrarTransladables, filtrarTuristicos]
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@700&display=swap');
+
+
+
+.container-body {
+  min-width: 700px;
+}
+
+@media screen and (max-width:700px) {
+  .container-body {
+    min-width: 0;
+  }
+
+  .search-container {
+    width: 90vw;
+    margin: auto;
+  }
+}
+
+.filter-item {
+  align-items: center;
+  display: flex;
+}
 
 label {
   padding-left: 5px;
@@ -184,6 +208,8 @@ label {
   gap: 10px;
   align-items: center;
   text-align: center;
+  justify-content: center;
+
 }
 
 .timer-container {
