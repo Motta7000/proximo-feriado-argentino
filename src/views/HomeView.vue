@@ -11,12 +11,26 @@ import { onMounted } from "vue";
 
 const rAux = ref([]);
 const search = ref("");
-const filtrarInamovibles = ref(false);
-const filtrarTransladables = ref(false);
-const filtrarTuristicos = ref(false);
+// Función para obtener el valor inicial de las variables desde el almacenamiento local
+const obtenerValorInicial = (nombreVariable, valorPorDefecto) => {
+  const valorAlmacenado = localStorage.getItem(nombreVariable);
+  return valorAlmacenado !== null ? JSON.parse(valorAlmacenado) : valorPorDefecto;
+};
+
+// Define tus variables con los valores iniciales obtenidos del almacenamiento local
+const filtrarInamovibles = ref(obtenerValorInicial('filtrarInamovibles', false));
+const filtrarTransladables = ref(obtenerValorInicial('filtrarTransladables', false));
+const filtrarTuristicos = ref(obtenerValorInicial('filtrarTuristicos', false));
+
+// Función para guardar el valor de una variable en el almacenamiento local
+const guardarEnLocalStorage = (nombreVariable, valor) => {
+  localStorage.setItem(nombreVariable, JSON.stringify(valor));
+};
+
 let feriados = ref([]);
 
 onMounted(() => {
+
   onSnapshot(collection(db, "feriados"), (querySnapshot) => {
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
@@ -55,13 +69,15 @@ onMounted(() => {
 
     rAux.value = feriados.value
   })
+  filtrarBusqueda()
+
+  console.log(feriados.value)
 })
 
-watchArray([search, filtrarInamovibles, filtrarTransladables, filtrarTuristicos], () => {
-  console.log("Hello from watch")
-
+function filtrarBusqueda() {
   let filtro = [];
   let feriadosFinal = [];
+  console.log(filtrarInamovibles.value)
   if (filtrarInamovibles.value === true) {
     filtro.push('Inamovible');
   }
@@ -91,6 +107,13 @@ watchArray([search, filtrarInamovibles, filtrarTransladables, filtrarTuristicos]
   }
   console.log(feriadosFinal);
   feriados.value = feriadosFinal.filter(f => f.queSeCelebra.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").includes(search.value.toLowerCase()))
+}
+watchArray([filtrarInamovibles], () => {
+  guardarEnLocalStorage('filtrarInamovibles', filtrarInamovibles.value);
+})
+watchArray([search, filtrarInamovibles, filtrarTransladables, filtrarTuristicos], () => {
+  console.log("Hello from watch")
+  filtrarBusqueda()
   //feriados.value = rAux.value.filter(f => f.queSeCelebra.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").includes(search.value.toLowerCase())) //f de feriado
   /*if (feriadosFinal.length != 0) {
     feriados.value = feriados.value.filter()
@@ -176,8 +199,6 @@ watchArray([search, filtrarInamovibles, filtrarTransladables, filtrarTuristicos]
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@700&display=swap');
-
-
 
 .container-body {
   min-width: 700px;
@@ -283,7 +304,6 @@ h1 {
     grid-template-columns: repeat(1, 1fr);
   }
 }
-
 
 .vh {
   height: 80vh;

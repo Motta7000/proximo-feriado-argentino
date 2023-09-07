@@ -29,6 +29,7 @@ fecha.value = feriado.fecha.split('T')[0].split('-')
     <div class="grid-container my-5">
         <article>
             <div class="article-container">
+                <a @click="$router.go(-1)">back</a>
                 <h1 class="que-se-celebra-text">{{ feriado.queSeCelebra }}</h1>
                 <p>{{ fecha[2] + '/' + fecha[1] + '/' + fecha[0] }}</p>
 
