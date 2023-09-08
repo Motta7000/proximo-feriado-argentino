@@ -22,6 +22,7 @@ const filtrarInamovibles = ref(obtenerValorInicial('filtrarInamovibles', false))
 const filtrarTransladables = ref(obtenerValorInicial('filtrarTransladables', false));
 const filtrarTuristicos = ref(obtenerValorInicial('filtrarTuristicos', false));
 const search = ref(obtenerValorInicial('search', null));
+var cargando = ref(true);
 
 // Función para guardar el valor de una variable en el almacenamiento local
 const guardarEnLocalStorage = (nombreVariable, valor) => {
@@ -70,6 +71,7 @@ onMounted(() => {
 
     rAux.value = feriados.value
     filtrarBusqueda()
+    cargando.value = false;
   })
 
 
@@ -172,7 +174,7 @@ watchArray([search, filtrarInamovibles, filtrarTransladables, filtrarTuristicos]
             placeholder="Nombre del feriado">
           <Icon class="icon-search" icon="material-symbols:search" width="40" height="40"></Icon>
         </div>
-        <div class="py-1 px-2 flex-filters">
+        <div class="pb-1 px-2 flex-filters">
           <div class="filter-item">
             <input type="checkbox" id="inamovibles" v-model="filtrarInamovibles">
             <label for="inamovibles">Inamovible</label>
@@ -193,14 +195,23 @@ watchArray([search, filtrarInamovibles, filtrarTransladables, filtrarTuristicos]
             <Card v-for="feriado in feriados" :feriado="feriado" />
           </div>
         </div>
-        <div class="grid-container-empty px-2" v-else>
-          <div> </div>
-          <div class="flex-item pt-3">
-            <p class="mb-1"><i>No se Encontraron Feriados...</i></p>
-            <Icon height="30" width="30" icon="subway:missing" />
+        <div v-else>
+          <div class="grid-container-empty px-2" v-if="cargando == false">
+            <div> </div>
+            <div class="flex-item pt-3">
+              <p class="mb-1"><i>No se Encontraron Feriados...</i></p>
+              <Icon height="30" width="30" icon="subway:missing" />
+            </div>
+            <div></div>
           </div>
-          <div></div>
-
+          <div v-else>
+            <div> </div>
+            <div class="flex-item pt-3">
+              <p class="mb-1"><i>Cargando...</i></p>
+              <Icon height="30" width="30" icon="subway:missing" />
+            </div>
+            <div></div>
+          </div>
         </div>
 
       </div>
