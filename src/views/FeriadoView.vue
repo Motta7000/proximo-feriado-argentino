@@ -29,7 +29,7 @@ fecha.value = feriado.fecha.split('T')[0].split('-')
     <div class="grid-container my-5">
         <article>
             <div class="article-container">
-                <a @click="$router.go(-1)">back</a>
+                <a @click="$router.go(-1)">Volver</a>
                 <h1 class="que-se-celebra-text">{{ feriado.queSeCelebra }}</h1>
                 <p>{{ fecha[2] + '/' + fecha[1] + '/' + fecha[0] }}</p>
 
@@ -61,6 +61,21 @@ fecha.value = feriado.fecha.split('T')[0].split('-')
 </template>
 
 <style scoped>
+a {
+    color: #fff
+}
+
+a {
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: underline !important;
+}
+
+a:hover {
+    color: #fff;
+    background-color: #fff0;
+    cursor: pointer;
+}
+
 .descripcion {
     text-align: center;
 }

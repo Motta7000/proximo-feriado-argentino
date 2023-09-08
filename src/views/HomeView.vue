@@ -10,7 +10,7 @@ import { collection, onSnapshot } from "firebase/firestore"
 import { onMounted } from "vue";
 
 const rAux = ref([]);
-const search = ref("");
+
 // Función para obtener el valor inicial de las variables desde el almacenamiento local
 const obtenerValorInicial = (nombreVariable, valorPorDefecto) => {
   const valorAlmacenado = localStorage.getItem(nombreVariable);
@@ -21,6 +21,7 @@ const obtenerValorInicial = (nombreVariable, valorPorDefecto) => {
 const filtrarInamovibles = ref(obtenerValorInicial('filtrarInamovibles', false));
 const filtrarTransladables = ref(obtenerValorInicial('filtrarTransladables', false));
 const filtrarTuristicos = ref(obtenerValorInicial('filtrarTuristicos', false));
+const search = ref(obtenerValorInicial('search', null));
 
 // Función para guardar el valor de una variable en el almacenamiento local
 const guardarEnLocalStorage = (nombreVariable, valor) => {
@@ -68,8 +69,9 @@ onMounted(() => {
     }
 
     rAux.value = feriados.value
+    filtrarBusqueda()
   })
-  filtrarBusqueda()
+
 
   console.log(feriados.value)
 })
@@ -110,6 +112,15 @@ function filtrarBusqueda() {
 }
 watchArray([filtrarInamovibles], () => {
   guardarEnLocalStorage('filtrarInamovibles', filtrarInamovibles.value);
+})
+watchArray([filtrarTransladables], () => {
+  guardarEnLocalStorage('filtrarTransladables', filtrarTransladables.value);
+})
+watchArray([filtrarTuristicos], () => {
+  guardarEnLocalStorage('filtrarTuristicos', filtrarTuristicos.value);
+})
+watchArray([search], () => {
+  guardarEnLocalStorage('search', search.value);
 })
 watchArray([search, filtrarInamovibles, filtrarTransladables, filtrarTuristicos], () => {
   console.log("Hello from watch")
