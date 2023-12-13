@@ -29,11 +29,11 @@ fecha.value = feriado.fecha.split('T')[0].split('-')
     <div class="grid-container my-5">
         <article>
             <div class="article-container">
-                <a @click="$router.go(-1)">Volver</a>
-                <h1 class="que-se-celebra-text">{{ feriado.queSeCelebra }}</h1>
-                <p>{{ fecha[2] + '/' + fecha[1] + '/' + fecha[0] }}</p>
 
-                <p v-if="feriado.dias > 0">Días Restantes: <b>{{ feriado.dias }}</b></p>
+                <h1 class="que-se-celebra-text">{{ feriado.queSeCelebra }}</h1>
+                <p class="fecha">{{ fecha[2] + '/' + fecha[1] + '/' + fecha[0] }}</p>
+
+                <p class="dias" v-if="feriado.dias > 0">Días Restantes: <b>{{ feriado.dias }}</b></p>
                 <div class="tipo-feriado-container mb-2">
                     <p class="m-0">Tipo de Feriado: {{ feriado.tipo }}</p>
                     <div v-if="feriado.tipo == 'Trasladable'" class="icono green"></div>
@@ -42,6 +42,8 @@ fecha.value = feriado.fecha.split('T')[0].split('-')
                 </div>
                 <p class="descripcion" v-for="d in feriado.descripcion">{{ d }}</p>
                 <img :alt="feriado.alt" :src="feriado.img">
+                <!--<p><sub>Portaretrato de manuel belgrano con la bandera argentina de fondo</sub></p>-->
+                <a @click="$router.go(-1)">Volver</a>
                 <div>
                 </div>
             </div>
@@ -68,12 +70,21 @@ a {
 a {
     font-family: Arial, Helvetica, sans-serif;
     text-decoration: underline !important;
+    ;
 }
 
 a:hover {
     color: #fff;
     background-color: #fff0;
     cursor: pointer;
+}
+
+.fecha {
+    margin-bottom: 0.5rem;
+}
+
+.dias {
+    margin-bottom: 0;
 }
 
 .descripcion {
@@ -87,6 +98,10 @@ a:hover {
 img {
     width: 100%;
     max-width: 500px;
+    border: #000 1px solid;
+    margin-bottom: 1rem;
+    box-shadow: 5px 5px 5px #9d9d9d;
+
 }
 
 .tipo-feriado-container {
